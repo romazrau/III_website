@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <title>03setclock.html</title>
+
+    <style>
+        img{
+            width: 3rem;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- <img alt="" src="Images/0.gif" /><img alt="" src="Images/1.gif" />:<img alt="" src="Images/2.gif" /><img alt="" src="Images/3.gif" /> -->
+
+    <img alt="" id="picH1" /><img alt="" id="picH2" />:
+    <img alt="" id="picM1" /><img alt="" id="picM2" />:
+    <img alt="" id="picS1" /><img alt="" id="picS2" />
+
+    <script>
+      const updataTime = () => {
+        //建立日期
+        let time = new Date();
+
+        //取得秒數，分割為兩位數
+        let timeSS = time.getSeconds();
+        let s10 = Math.floor(timeSS / 10);
+        let s01 = timeSS % 10;
+
+        let timeMM = time.getMinutes();
+        let m10 = Math.floor(timeMM/ 10);
+        let m01 = timeMM % 10;
+
+        let timeHH = time.getHours();
+        let h10 = Math.floor(timeHH / 10);
+        let h01 = timeHH % 10
+
+        //顯示圖片，對應秒數
+        document.querySelector("#picS1").src = `./Images/${s10}.gif`;
+        document.querySelector("#picS2").src = `./Images/${s01}.gif`;
+
+        document.querySelector("#picM1").src = `./Images/${m10}.gif`;
+        document.querySelector("#picM2").src = `./Images/${m01}.gif`;
+
+        document.querySelector("#picH1").src = `./Images/${h10}.gif`;
+        document.querySelector("#picH2").src = `./Images/${h01}.gif`;
+      };
+      updataTime();
+
+
+      setInterval(updataTime, 1000);
+    </script>
+  </body>
+</html>

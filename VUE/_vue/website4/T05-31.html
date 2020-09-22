@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Class與Style綁定</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <style>
+        .active { color:blue;  }
+        .bold {font-weight:bold;}
+        .large {font-size:1.5em;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p class="large" v-bind:class="{active:isActive, bold:isBold }">class object(inline)</p>
+        <p class="large" v-bind:class="classObject">class object(data property)</p>
+        <p class="large" v-bind:class="classObject2">class object(computed property)</p>
+        <p class="large" v-bind:class="[activeClass,{bold:true}]">class array</p>
+
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize+'px' }">style object(inline)</div>
+        <div v-bind:style="styleObject">style object(data property)</div>
+        <div v-bind:style="[styleObject2,{fontSize: fontSize+'px'}]">style array</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isBold: false,
+                classObject: {
+                    active: true,
+                    bold: true
+                },
+                activeClass: "active",
+
+                activeColor: 'red',
+                fontSize: 26,
+
+                styleObject: {
+                    color: 'red',
+                    "font-size":"26px"
+                },
+
+                styleObject2: {
+                    color: 'red'                   
+                }
+            },
+            computed: {
+                classObject2: function () {
+                    return {
+                        active: true,
+                        bold: true
+                    };
+                }
+            }
+        })
+    </script>
+</body>
+</html>

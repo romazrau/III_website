@@ -1,0 +1,15 @@
+<div id="div1">div</div>
+<input type="text" id="idName" value="abc" >
+<span id="idsp"></span><br>
+<input type="button" id="idbut" value="check" onclick="f()">
+<script>
+function f(){
+var mydiv=document.getElementById("div1");
+console.log(mydiv.innerHTML);
+var mysp=document.getElementById("idsp");
+mysp.innerHTML=mydiv.innerHTML;
+var myText=document.getElementById("idName");
+console.log(myText.value);
+console.log(myText.id);
+}
+</script>

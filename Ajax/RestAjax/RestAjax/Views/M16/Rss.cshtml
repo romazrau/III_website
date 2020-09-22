@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RSS Demo</title>
+</head>
+<body>
+    <h2>RSS Demo</h2>
+    <table border='1' id="demo"></table>
+    <script>
+        //var xhttp = new XMLHttpRequest();
+        //xhttp.onreadystatechange = function () {
+        //    if (xhttp.readyState == 4 && xhttp.status == 200) { 
+               
+        //        var xmlDoc = xhttp.responseXML;
+
+        //        var txt = "<tr><th>pubDate</th><th>title</th><th>Link</th></tr>";       
+                
+        //        var pubDates = xmlDoc.getElementsByTagName("pubDate");
+        //        var titles = xmlDoc.getElementsByTagName("title");
+        //        var links = xmlDoc.getElementsByTagName("link");
+
+        //        for (let i = 0; i < pubDates.length; i++) {
+        //            txt += "<tr><td>" + pubDates[i].firstChild.nodeValue + "</td>";
+        //            txt += "<td>" + titles[i].firstChild.nodeValue + "</td>";
+        //            txt += "<td><a href='" + links[i].firstChild.nodeValue + "'>" + links[i].firstChild.nodeValue + "</a></td></tr>";
+        //        }
+        //        document.getElementById("demo").innerHTML = txt;
+        //    }
+        //}
+        //xhttp.open("GET", "/M16/ReadRss", true);
+        //xhttp.send();
+
+        fetch("/M16/ReadRss")
+            .then((e) => e.text())
+            .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+            .then((e) => {
+                var xmlDoc = e;
+
+                var txt = "<tr><th>pubDate</th><th>title</th><th>Link</th></tr>";
+
+                var pubDates = xmlDoc.getElementsByTagName("pubDate");
+                var titles = xmlDoc.getElementsByTagName("title");
+                var links = xmlDoc.getElementsByTagName("link");
+
+                for (let i = 0; i < pubDates.length; i++) {
+                    txt += "<tr><td>" + pubDates[i].firstChild.nodeValue + "</td>";
+                    txt += "<td>" + titles[i].firstChild.nodeValue + "</td>";
+                    txt += `<td><a href='${links[i].firstChild.nodeValue}' >` + links[i].firstChild.nodeValue + "</a></td></tr>";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            })
+            .catch();
+    </script>
+</body>
+</html>

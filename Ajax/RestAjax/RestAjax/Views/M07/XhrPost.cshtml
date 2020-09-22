@@ -1,0 +1,21 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Post Method Demo</h2>
+    <div id="demo"></div>
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200)
+                document.getElementById("demo").innerHTML = xhttp.responseText;
+        }
+        xhttp.open("POST", "/M07/NameCity", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("name=Doris&city=Tainan");
+    </script>
+</body>
+</html>

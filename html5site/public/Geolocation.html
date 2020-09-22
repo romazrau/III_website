@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        navigator.geolocation.getCurrentPosition(geores, georej);
+        function geores(positon) {
+            console.group();
+            console.log(positon);
+            console.log(positon.coords);
+            console.groupEnd();
+        }
+
+        function georej(error) {
+            console.group();
+            console.log(error);
+            console.log(error.code);
+            console.log(error.message);
+            console.groupEnd();
+        }
+
+        console.log(123);
+        console.log(456);
+
+
+
+    </script>
+
+
+</body>
+
+</html>

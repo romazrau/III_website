@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01Array.html</title>
+</head>
+<body>
+    <script>
+        //Array 物件
+        let balls=["baseball","basketball",123];
+        console.log(balls);
+
+        for(let i=0;i<balls.length;i++){
+            console.log("balls["+i+"]="+balls[i]);
+        }
+
+        for(let ball of balls){
+            console.log(ball);
+        }
+        //Array 方法
+        console.log("=========");
+        let ary=[1,2,3];
+        // let ballsAll=balls.concat(ary);
+        // console.log(ballsAll);
+
+        console.log(balls.concat(ary));
+        console.log(balls.join("-"));
+
+        balls.reverse();
+        console.log(balls);
+
+        balls.push("item");
+        console.log(balls);
+
+        balls.shift();
+        console.log(balls);
+
+        // console.log(balls.slice(0,2));
+
+        let sliceballs=balls.slice(0,2);
+        console.log(sliceballs);
+        console.log(balls);
+        console.log("============")
+        balls.splice(1,2,"tennis","volleyball");
+        console.log(balls);
+        
+    </script>
+</body>
+</html>

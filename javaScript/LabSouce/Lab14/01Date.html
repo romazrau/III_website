@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01Date.html</title>
+</head>
+<body>
+    <script>
+        //建立日期物件語法 1
+        let d = new Date();
+        console.log(d);
+
+        //建立日期物件語法 2
+        console.log(new Date("2012/2/32"));
+
+        //建立日期物件語法 3
+        console.log(new Date(2012, 11, 100));
+
+        let theYear = d.getFullYear() - 1911;
+        let theMonth = d.getMonth() + 1;
+        let theDate = d.getDate();
+        //document.write(d);
+        document.write("民國" + theYear + "年" + theMonth + "月" + theDate + "日" + "<br>");
+
+    </script>
+</body>
+</html>

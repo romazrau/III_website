@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>05eventHandlerFocusBlur.html</title>	
+</head>
+
+<body>
+    <label>name:</label>
+    <input type="text" id="idName" /><br />
+    <label>password:</label>
+    <input type="password" id="idPwd" /><hr />
+    <label>縣市:</label>
+    <select id="idaddr">
+        <option value="1" selected>台北市</option>
+        <option value="2">新北市</option>
+        <option value="3">桃園市</option>
+    </select>
+    <br>
+    <div id="iddiv"></div>
+    
+    <script>
+        document.getElementById("idName").onblur = blur;  //事件繫結，焦點離開
+        document.getElementById("idName").onfocus = focus;  //事件繫結，取得焦點
+        document.getElementById("idaddr").onchange = change;  //事件繫結，改變內容
+
+
+        function blur() {
+            this.style.backgroundColor="pink";
+        }
+
+        function focus() {
+            this.style.backgroundColor="yellow";
+        }
+
+        function change() {
+            var theVal=this.value;
+            var mydiv=document.querySelector("#iddiv");                               
+            mydiv.innerHTML="你選擇的值為:"+theVal;                
+        }
+    </script>
+            
+</body>
+</html>

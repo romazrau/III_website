@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>fetch upload</title>
+</head>
+<body>
+    UploadFile: <input type="file" onChange="doUpload()" />
+    <script>
+        function doUpload() {
+            const formdata = new FormData();
+            formdata.append('photo', event.target.files[0]);
+            fetch('/M12/UploadOneFile', {
+                method: 'POST',
+                body: formdata
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                document.write(data.msg);
+            });
+        }
+    </script>
+</body>
+</html>

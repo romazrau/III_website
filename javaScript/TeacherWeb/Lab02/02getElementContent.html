@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01getElementContent.html</title>
+</head>
+<body>
+    
+    <div id="myDiv">div</div>
+    <script>
+        // document.write("<h2>this is heading 2</h2>");
+        var myDivObj=document.getElementById("myDiv");  //object element
+        // console.log(myDivObj.innerHTML);
+        var content=myDivObj.innerHTML;
+        console.log(content);
+        // myDivObj.innerHTML="<h2>"+content+"</h2>";  //<h2>div</h2>
+        myDivObj.innerHTML="<h2>JavaScript</h2>";
+        // myDivObj.innerHTML= myDivObj.innerHTML+"<h2>Hello!</h2>";
+        myDivObj.innerHTML+="<h2>Hello!</h2>";
+
+    </script>
+    
+</body>
+</html>

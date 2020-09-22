@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>loading image</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        #loader {
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <h2>Loading Demo</h2>
+    <div id="show"><img src="/images/ajax-loader.gif" id="loader"></div><p>
+    <script>
+        $(document).ajaxSend(function () {
+            alert("send");
+        });
+        $(document).ajaxStart(function () {
+            $("#loader").show();
+            alert("start");
+        });
+        $(document).ajaxComplete(function () {
+            alert("complete");
+        });
+        $(document).ajaxStop(function () {
+            alert("stop");
+        });
+        $(document).ajaxSuccess(function () {
+            $("#loader").hide();
+            alert("success");
+        });
+        $.ajax({
+            url: "/res/info.txt",
+            type: "GET",
+            success: function (data) {
+                $("#show").append(data);
+            }
+        });
+    </script>
+</body>
+</html>

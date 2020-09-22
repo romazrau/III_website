@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            background-color: rgb(179, 179, 179);
+            margin: 0 auto;
+            width: 600px;
+            height: 80vh;
+            padding: 2em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flexItem{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 1em;
+        }
+
+        .itemAlignEnd{
+            align-self: flex-end;
+        }
+
+        .itemAlignStart{
+            align-self: flex-start;
+        };
+    </style>
+</head>
+<body>
+ <div class="container">
+     <div class="flexItem itemAlignStart">item:1</div>
+     <div class="flexItem">item:2</div>
+     <div class="flexItem itemAlignEnd" >item:3</div>
+ </div>
+
+
+ <script>
+    const randomColor = () => {
+      return Math.floor(Math.random() * 255 + 1);
+    };
+
+    let item = document.getElementsByClassName("flexItem");
+    for (let i = 0; i < item.length; i++) {
+      item[i].setAttribute(
+        "style",
+        `background-color:rgb(${randomColor()},${randomColor()},${randomColor()})`
+      );
+    }
+  </script>
+    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        font-size: 50px;
+      }
+
+      .border {
+        border: 10px solid gray;
+      }
+
+      .header {
+        grid-area: header;
+      }
+
+      .menu {
+        grid-area: menu;
+      }
+
+      .content {
+        grid-area: content;
+      }
+
+      .footer {
+        grid-area: footer;
+      }
+
+      .container {
+        display: grid;
+        height: 80vh;
+        grid-template-columns: 30% auto;
+        grid-template-rows: 30% auto 30%;
+        grid-template-areas: "header header" "menu content" "footer footer";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header border grid">header</header>
+      <div class="menu border grid">menu</div>
+      <div class="content border grid">content</div>
+      <footer class="footer border grid">footer</footer>
+    </div>
+
+    <script>
+      const randomColor = () => {
+        return Math.floor(Math.random() * 255 + 1);
+      };
+
+      let item = document.getElementsByClassName("grid");
+      for (let i = 0; i < item.length; i++) {
+        item[i].setAttribute(
+          "style",
+          `background-color:rgb(${randomColor()},${randomColor()},${randomColor()})`
+        );
+      }
+    </script>
+  </body>
+</html>

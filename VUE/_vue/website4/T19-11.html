@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Filters</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>    
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message | toUpperCase | appendPostfix('...') }}</h1>       
+    </div>
+    <script>       
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello vue'
+            },
+            filters: {
+                toUpperCase: function (val) { //過濾器函式第一個參數(val)會被傳入管道左邊的運算式的值
+                    if (!val)
+                        return '';
+                    return val.toString().toUpperCase();
+                },
+                appendPostfix: function (val, postfix) { //過濾器函式第一個參數(val)會被傳入管道左邊的運算式的值
+                                                         //第二個參數(postfix)會被傳入過濾器呼叫時的引數值
+                    if (!val)
+                        return '';
+                    else if (!postfix)
+                        return val;
+                    else
+                        return val.toString() + postfix;                   
+                }
+            }           
+        });
+    </script>
+</body>
+</html>

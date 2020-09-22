@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>09createOptionObject.html</title>    
+</head>
+<body>
+    <label>年:</label><select id="idSelectYear"></select>
+    <label>月:</label><select id="idSelectMonth"></select>
+    <label>日:</label><select id="idSelectDay"></select>
+    <select>
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+    </select>
+    <input type="button" id="idClear" value="Clear">
+    
+    <script>                   
+            document.getElementById("idSelectYear").onchange=addDate;
+            document.getElementById("idSelectMonth").onchange=addDate;
+            
+            for (let i =2010; i <= 2020; i++) {   //新增年 
+                let opt = document.createElement("option");  
+                // opt.setAttribute("value", i);  
+                // let optText = document.createTextNode(i); 
+                // opt.appendChild(optText);  
+                opt.value = i;
+                opt.innerHTML = i;
+                document.getElementById('idSelectYear').appendChild(opt);
+                //<select id="idSelectMonth"><option value="1">1</option></select>
+            }
+            for (let i = 1; i <= 12; i++) {   //新增月 
+                let opt = document.createElement("option");  
+                opt.setAttribute("value", i); 
+                let optText = document.createTextNode(i); 
+                opt.appendChild(optText); 
+                //opt.value = i;
+                //opt.innerHTML = i;
+                document.getElementById('idSelectMonth').appendChild(opt);                    
+            }
+
+            function addDate(){
+                
+            }
+        
+    </script>
+</body>
+</html>

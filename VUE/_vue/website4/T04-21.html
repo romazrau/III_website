@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>條件渲染(Conditional Rendering)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢&#x1F622;</h1>   <!--https://dict.emojiall.com/zh-hant -->
+        <hr/>
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+
+
+
+
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                awesome: false,
+                ok: true,
+                emps: [
+                    {empid:1, name: 'PJ'},
+                    {empid:2, name: 'PJJ'},
+                    {empid:3, name: 'PJI'},
+                    {empid:4, name: 'PJQ'},                   
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

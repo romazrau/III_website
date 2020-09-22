@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./javascripts//vue 2.6.11/vue.js"></script>
+
+
+    <style>
+        *{
+            font-family: "標楷體";
+        }
+        .c5style{
+            font-style: italic;
+        }
+        .c5weight{
+            font-weight: 800;
+        }
+        .c5size{
+            font-size: 5rem;
+        }
+        .c5color{
+            color:red;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <div>{{msg2}}</div>
+
+        <br/>
+        <div>My 成績</div>
+        <div v-if="g>90">A</div>
+        <div v-else-if="g>80">B</div>
+        <div v-else-if="g>70">C</div>
+        <div v-else>F</div>
+        <br/>
+
+        <ul>
+            <li v-for="ele,index in emps">
+                {{index}}: {{ele.empid}}-{{ele.name}}
+            </li>
+        </ul>
+
+        <div style="border: 2px solid #000;line-height: 2rem; margin-bottom: ;" v-for="ele,index in emps" v-bind:key="ele.empid+ele.name">
+            <div>{{index}}</div>
+            <div>
+                {{ele.empid}}
+                <input type="text" value="ele.name">
+            </div>
+            <hr/>
+        </div>
+
+
+        <h2>C5 class</h2>
+        <div v-bind:class="['c5size', style, {c5weight: isShow }, {c5color: true}]">PJJ 好厲害</div>
+
+
+        <h2>C5 CSS</h2>
+        <div v-bind:style='[ cssColor, { fontSize: "3rem" }, { textDecoration: cssLine  } ]'>PJ要更改這個</div>
+
+        
+
+    </div>
+    <script>
+        let vm = new Vue({
+            // el: "#app",
+            data: {
+                msg: "Hellow PJ",
+                msg2: "HI HI",
+                g: 75,
+                emps: [
+                    {empid:1, name: 'PJ'},
+                    {empid:2, name: 'PJJ'},
+                    {empid:3, name: 'PJI'},
+                    {empid:4, name: 'PJQ'},                   
+                ],
+                style:{
+                    "c5style" : true 
+                },
+                isShow: true,
+                cssColor: {
+                    color: "violet"
+                },
+                cssLine: "underline"
+            }
+        })
+
+        vm.$mount("#app");
+
+        setTimeout(
+            ()=>{
+                vm.msg = "PJJPP";
+                vm.msg2 = "JPPJJ";
+            },
+            3000
+        )
+
+        vm.g =89;
+
+
+    </script>
+
+</body>
+</html>

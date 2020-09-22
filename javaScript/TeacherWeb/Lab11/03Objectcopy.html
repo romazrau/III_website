@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>03Objectcopy.html</title>
+</head>
+<body>
+    <script>
+        //Object淺層複製
+        var obj1 = { a: 10, b: 20, c: {d:40,e:50} };
+        var obj2 = obj1;
+        // var obj3 = Object.assign({}, obj1); 
+        var obj3={};
+        Object.assign(obj3, obj1);
+        obj1.c.d="replace";
+        obj1.b = 100;
+
+        console.log("obj1:",obj1); 
+        console.log("obj2:", obj2); 
+        console.log("obj3:", obj3);    //obj3.b=20
+
+        //Object深層複製
+        // var obj1 = {name: 'Tom', b: 20, c: {d:40,e:50} };
+        // var obj2 = obj1;
+        // var str = JSON.stringify(obj1);  //把物件轉成字串
+        // var obj3 = JSON.parse(str);   //把字串轉成JavaScript原生物件
+        // obj1.c.d="replace";
+        // obj1.b = 100;
+
+        // console.log("obj1:",obj1); 
+        // console.log("obj2:", obj2); 
+        // console.log("obj3:", obj3);  //obj3.b=20,obj3.c.d=40
+        // console.log("str:", str);   
+
+    </script>
+</body>
+</html>

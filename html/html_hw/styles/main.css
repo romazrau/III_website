@@ -1,0 +1,23 @@
+.containter {
+  padding: 0vh 10vw;
+  margin: 5vh 5vw;
+  border: 2px solid seashell;
+}
+
+.img_cotainter {
+  padding: 1em;
+  border: 1px solid wheat;
+  float: left;
+  text-align: center;
+}
+
+.img_border{
+    border: 1px solid rgb(255, 234, 196); 
+}
+
+.title{
+    text-align: center;
+    margin-top:2em;
+    margin-bottom: 2em;
+}
+

@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$.load()</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <h2>Load Method Demo</h2>
+    <div id="demo"></div>
+
+    <script>
+        $("#demo").load("/M13/NameCity",
+            { name: "Stephen", city: "Tainan" });
+    </script>
+</body>
+</html>

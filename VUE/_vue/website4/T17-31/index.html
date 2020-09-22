@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>條件篩選</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="myPaginator.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>   
+    <script src="myPaginator.js"></script>    
+</head>
+<body>
+    <div id="app">
+        <div id="container">
+            <div class="page-title">商品列表</div>
+            <fieldset>
+                <legend>篩選條件</legend>
+                <form class="filter">
+                    <label>品號: <input type="text" v-model="productid" size="20" placeholder="請輸入品號關鍵字"/></label>
+                    <label>品名: <input type="text" v-model="productname" size="20" placeholder="請輸入品名關鍵字" /></label>
+                </form>
+            </fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="width-small">品號</th>
+                        <th>圖片</th>
+                        <th class="width-large justify-left">品名</th>
+                        <th>單價</th>
+                        <th>庫存量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in itemList" :key="item.productid">
+                        <td class="width-small">{{item.productid}}</td>
+                        <td><img :src="item.photo" width="60" height="60" /></td>
+                        <td class="width-large justify-left">{{item.productname}}</td>
+                        <td>{{item.unitprice}}</td>
+                        <td>{{item.unitsinstock}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="paginator1"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

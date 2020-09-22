@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>08CreateRemoveElement.html</title>
+</head>
+
+<body>
+    <div id="iddiv">div</div>
+    <input type="button" value="CreateElement" id="idCEle" >
+    <input type="button" value="RemoveElement" id="idREle" >
+
+    <script>
+        document.getElementById("idCEle").onclick=CreateElement;
+        document.getElementById("idREle").onclick=RemoveElement;
+        function RemoveElement(){
+            let theNode=document.getElementById("idImg");
+            // theNode.parentNode.removeChild(theNode);
+            theNode.remove();
+        }
+        function CreateElement() {
+            let theDIV = document.getElementById("iddiv");  //取得div物件
+
+            let eleP = document.createElement("p");  //<p></p>
+            let txtP = document.createTextNode("Hello World");  //Hello World
+            eleP.appendChild(txtP);   //<p>Hello World</p>
+
+            theDIV.appendChild(eleP);  //<div><p>Hello World</p></div>
+
+            let eleImg = document.createElement("img");  //<img>
+            eleImg.setAttribute("src", "images/rabbit-hat.gif");  //<img src...
+            eleImg.setAttribute("id","idImg");
+
+            theDIV.appendChild(eleImg);//<div><p>Hello World</p><img src...</div>
+        }
+    </script>
+</body>
+</html>

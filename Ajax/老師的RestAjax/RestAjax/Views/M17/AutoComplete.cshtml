@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Auto Complete</title>
+</head>
+<body>
+    <b>Start typing a name:</b><p>
+        name: <input type="text" onkeyup="showHint(this.value)">
+    <p>Suggestions: <span id="demo"></span></p>
+
+    <script>
+        function showHint(str) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200)
+                    document.getElementById("demo").innerHTML = xhttp.responseText;
+            }
+            xhttp.open("GET", "/M17/GetAutoComplete?qstr=" + str, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

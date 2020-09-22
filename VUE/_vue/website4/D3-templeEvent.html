@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+
+        <blog 
+        v-for="ele,i in posts"
+        v-bind:post="ele"
+        v-bind:key="ele.id"
+
+        v-bind:style="{fontSize: mySize + 'rem'}"
+        v-on:font-size-plus="fontPlus"
+
+        >
+        </blog>
+
+    </div>
+
+
+
+
+    <script>
+        Vue.component('blog', {
+            props: ['post'],
+            template:
+            `
+             <div>
+                <h2>{{post.title}}</h2>
+                <div>
+                    <button v-on:click="$emit('font-size-plus', 0.1)">+</button>
+                    <button v-on:click="$emit('font-size-plus', -0.1)">-</button>
+                </div>
+            </div>
+             `
+        })
+
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                mySize: 1,
+                posts: [
+                    { id: 1, title: "PJ" },
+                    { id: 2, title: "JPJ" },
+                    { id: 3, title: "PJP" },
+                ]
+            },
+            methods: {
+                fontPlus: function(cc){
+                    this.mySize += cc;
+                    console.log(cc, this.mySize);
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./styles/first.css" />
+    <style>
+      .linkStlye a:link {
+        color: cornflowerblue;
+        text-decoration: none;
+      }
+      .linkStyle a:visited {
+        color: crimson;
+        text-decoration: underline;
+      }
+      .linkStyle a:hover {
+        color: rgb(143, 175, 235);
+        font-size: 1.5em;
+      }
+      .linkStyle a:active {
+        color: rgb(19, 56, 124);
+      }
+      .list2 {
+        list-style-image: url("./bird_pink_robin.png");
+      }
+      .list3 {
+        list-style-image: url("./bird_inko_sakura.png");
+      }
+      .listInside {
+        list-style-position: inside;
+      }
+      .markBackground {
+        background-color: rgb(216, 216, 216);
+      }
+      .hasborder {
+        border: 5px dotted red;
+        border-radius: 10px;
+      }
+      .hasborder li {
+        /* padding-top: 1em;  /*垂直致中
+        padding-bottom: 1em; */
+        height: 3em;
+        line-height: 3em;
+      }
+      .imgContainer img {
+        width: 30vw;
+        border: 3px solid red;
+        padding: 1px;
+        margin: 5px 10px;
+      }
+      .centerDiv{
+        margin-left: 10vw;
+        margin-right: 10vw;
+       
+      }
+
+
+      #headlineDiv{
+        margin: 0;
+        background-color: rgb(253, 250, 237);
+      }
+
+      #headline {
+        background-color: blanchedalmond;
+        list-style-type: none;
+        overflow: auto;
+
+        margin: 0 0;
+      }
+
+      #headline li{
+        float: left;
+        height: 3em;
+        border-right: 1px solid rgb(230, 226, 211);
+
+        line-height: 3em;
+        width: 15vw;
+        text-align: center;
+        background-color: cornsilk;
+      }
+      
+      #hasAnimation{
+        animation: headlineA infinite 2s ease;
+      }
+
+      @keyframes headlineA{
+        0%{
+          background-color: rgb(255, 254, 249);
+        }
+        50%{
+          background-color: rgb(255, 235, 154);
+        }
+        100%{
+          background-color: rgb(255, 254, 249);
+        }
+      }
+
+      #headline a{
+        text-decoration: none;
+      }
+
+
+      #headline li:hover{
+        background-color: rgb(250, 231, 157);
+      }
+
+      .column1{
+        padding-top: 2em;
+        column-width: 20vw;
+        column-rule: 1px solid #b48a8a;
+        column-gap: 2em;
+      }
+
+      body{
+        margin: 0 0;
+      }
+
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="headlineDiv">
+      <ul id="headline">
+        <li id="hasAnimation">標題閃亮亮</li>
+        <li><a href="">連結一</a></li>
+        <li><a href="">連結二</a></li>
+        <li><a href="">連結三</a></li>
+      </ul>
+    </div>
+
+
+    <div class="containter">
+      <div class="flexItem">
+        <h1>我是H1</h1>
+        <h2>i'm h2</h2>
+        <p>qqq</p>
+      </div>
+      <div class="flexItem">
+        <h1 style="color: chocolate;">我是H1(inline)</h1>
+        <p>aaaa</p>
+      </div>
+      <div class="flexItem">
+        <h1 id="red">我是H1(ID)</h1>
+        <p>fffff</p>
+      </div>
+      <div class="flexItem">
+        <h1 id="red" style="color: chocolate;">我是H1(inline)</h1>
+        <p>fffff</p>
+      </div>
+    </div>
+    <div class="centerDiv">
+      <ul class="linkStyle">
+        <li><a href="">QQ</a></li>
+        <li><a href="">AA</a></li>
+        <li><a href="">ZZ</a></li>
+        <li><a href="">WW</a></li>
+      </ul>
+      <ol class="list1">
+        <li>QQQQ</li>
+        <li>AAAA</li>
+        <li>
+          <ul class="list2">
+            <li>QQQQ</li>
+            <li>WWWW</li>
+            <li>EEEE</li>
+            <li>
+              <ol class="list3">
+                <li class="markBackground">RRR</li>
+                <li class="listInside markBackground">List out side</li>
+              </ol>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <hr />
+      <h1>序列清單</h1>
+      <ol class="hasborder">
+        <li>QQQ</li>
+        <li class="markBackground">AAA</li>
+        <li>ZZZ</li>
+      </ol>
+      <div  class="imgContainer">
+        <h1>年薪百萬的代價？工程師淚曝超慘職業病 網嚇：經歷了什麼</h1>
+        <img style="float: left;" src="./下載.jpg" alt="" />
+        <img class="appLogo" style="float: right;" src="./下載.jpg" alt="" />
+        <p class="column1" style="clear:right;">
+          人人都嚮往能年薪破百萬，好過上「財富自由」的自在人生。不過就有網友好奇，工作壓力大但收入可觀的工程師們，工作做久了可能會出現什麼樣的「職業病」，沒想到釣出一票工程師分享慘痛的經驗。
+          © 由 三立新聞網 提供 ▲工程師淚曝慘痛的職業病。（示意圖／資料照）
+          8日有網友在PTT指出，「人說十萬青年十萬肝形容工程師的生活也不為過了，想想看我們工程師不是輪班就是一直整天看電腦」，他也指出「輪班的生活就是日夜顛倒，造成生理時鐘錯亂，容易引疾，整天看電腦造成晚年眼睛視力不好，有乾眼症」。
+          不僅如此，原PO也點出「座位坐久也容易血尿。常常也容易幻想」，讓他除了好奇「怎麼保養自己的身體」，也想知道「工程師做久會有什麼職業病？」
+          貼文引來不少網友分享親身經驗，「會變得很急躁沒有耐心」、「老花眼，看近物要拿下眼鏡」、「久坐背痛」、「好像隨時都會聽到值班手機的鈴聲」、「肚子變大」、「易怒／情緒化／變胖／講話內容變很有攻擊性」、「禿頭、白頭髮、口臭、講不好聽的笑話」。
+          不過也有人表示，「除了變胖，上面很多症狀我都沒，各位是經歷了什麼」、「職業傷害才對吧」、「太慘了吧」。
+        </p>
+      </div>
+      <img src="./kotowaza_hato_mamedeppou.png" alt="">
+
+      <div style="height: 80vh;"></div>
+    </div>
+  </body>
+</html>

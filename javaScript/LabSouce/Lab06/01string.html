@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01string.html</title>
+</head>
+<body>
+    <div id="info"></div>
+    <script>
+        //6-1:字串的標示方式
+        console.log("I'm"+"Maze."+`來做運算1+1=${1+1}`);
+
+        //6-2: 字串的跳脫表示
+        
+
+        //6-3: 字串的常用方法
+        let str2 = "java script";  //字串變數        
+        //字串物件
+        let str = "一二三四";
+        let strArray = [];
+        for(let i = 0; i<str.length; i++){
+            strArray.push(str.charCodeAt(i));
+        }
+        console.log(strArray);
+
+        console.log("strObj.charAt(3)=");
+        console.log("strObj.charCodeAt(3)=");
+        console.log("strObj.indexOf('a')=");
+        console.log("strObj.lastIndexOf('a')=");
+        console.log("strObj.lastIndexOf('@')=");
+        console.log("strObj.substr(5,3)=");
+        console.log("strObj.substr(5)=");
+        console.log("strObj.substring(5,8)=");
+        console.log("strObj.split(' ')=");
+        console.log("strObj.toUpperCase()=");
+    </script>
+</body>
+</html>

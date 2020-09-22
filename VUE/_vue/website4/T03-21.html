@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue的資料屬性與實體屬性</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1> {{message}} </h1>
+    </div>
+
+    <script>       
+        var vm = new Vue({
+            //el: "#app",  //If the option is available at instantiation, the instance will immediately enter compilation; 
+                         //otherwise, the user will have to explicitly call vm.$mount() to manually start the compilation.
+            data: { message: "Hello world..." }
+        });
+        
+        vm.$mount("#app"); 
+        //If the Vue instance didn’t get an el option at instantiation, you can manually call $mount(el) to start the compilation phase. 
+        //By default, the mounted element will be replaced by the instance’s template.
+
+        vm.message = "Hello pal...";
+    </script>
+</body>
+</html>

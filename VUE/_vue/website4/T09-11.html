@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>元件(Componenet)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <template id="template1">
+        <button v-on:click="count++">
+            您已點擊了我{{count}}次了...
+        </button>
+    </template>
+</head>
+<body>
+<div id="app">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+</div>
+    <script>
+        //定義(註冊)一個名為button-counter的全域的新元件
+        //Vue.component( id, [definition] )   
+Vue.component("button-counter", {
+    data: function () { 
+        return {
+            count: 0
+        } 
+    },
+    //***template屬性設定方法1: (template屬性值必須是"具單一根元素格式"之HTML字串)
+    // template:  `<button v-on:click='count++'> 
+    //             您已點擊了我{{count}}次了...
+    //             </button>`
+    // ***template屬性設定方法2:(template屬性值必須是"<template>元素之ID選擇器"之字串)
+    template: '#template1'
+});
+var vm = new Vue({
+    el: '#app'
+})
+    </script>
+</body>
+</html>

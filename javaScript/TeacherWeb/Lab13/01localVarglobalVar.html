@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01localVarglobalVar.html</title>
+</head>
+<body>
+    <script>
+        //廣域(全域)變數
+        var a=10;
+
+        //函數宣告定義
+        function f(){
+            var a=100;
+            console.log("function in a="+a);  //100
+            console.log("window.a="+window.a);  //10
+        }
+
+        //呼叫函數
+        console.log("funcction out before call a="+a);
+        f();
+        console.log("funcction out after call a="+a);
+    </script>        
+</body>
+</html>

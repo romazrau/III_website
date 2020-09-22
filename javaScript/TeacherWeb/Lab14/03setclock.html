@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>03setclock.html</title>
+
+</head>
+<body> 
+    <!-- <img alt="" src="Images/0.gif" /><img alt="" src="Images/1.gif" />:<img alt="" src="Images/2.gif" /><img alt="" src="Images/3.gif" />
+    -->
+    <img alt="" id="picH1" /><img alt="" id="picH2" />:
+    <img alt="" id="picM1" /><img alt="" id="picM2" />:
+    <img alt="" id="picS1" /><img alt="" id="picS2" />
+   
+    <script>        
+        function setClock(){
+            //建立日期
+            let d=new Date();
+
+            //取得秒數，分割為兩位數
+            let s=d.getSeconds();
+            // alert(s);  //48 48%10=8,48/10=parseInt(4.8)=4;
+            let s1=parseInt(s/10);
+            let s2=s%10;      
+
+            //顯示圖片，對應秒數
+            // document.querySelector("#picS1").src="Images/1.gif";
+            document.querySelector("#picS1").src="Images/"+s1+".gif";
+            document.querySelector("#picS2").src="Images/"+s2+".gif";
+        }
+        setClock();
+        window.setInterval(setClock,1000);
+    </script>
+</body>
+</html>

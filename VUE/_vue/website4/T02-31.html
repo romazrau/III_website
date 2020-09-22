@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的第一個Vue網頁</title>
+    <!-- 開發環境版本(development version)，包含了有帮助的主控台警告訊息-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+
+    <!-- 生產環境版本(production version)，優化了檔案大小和速度-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->    
+    <!--<script src="javascripts/vue 2.6.11/vue.min.js"></script>-->
+</head>
+<body>
+    <div id="app">
+        <h1> {{message}} </h1>
+    </div>
+    <script> 
+        //Vue.config.productionTip = false; //false to prevent the production tip on Vue startup.(如: You are running Vue in development mode. ...)
+
+        var vm = new Vue({
+            el: "#app", //Provide the Vue instance with an existing DOM element. It can be a CSS selector string, an actual HTMLElement, or a function that returns an HTMLElement. 
+                        //Note that the provided element merely serves as a mounting point; it will be replaced if a template is also provided.
+            data: { message: "Hello Vue..." }
+        });        
+    </script>
+</body>
+</html>

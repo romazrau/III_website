@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>計算屬性與監聽屬性</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>Watched properties(lastName,firstName): {{fullName}}</p>
+        <p>Computed property(fullName2): {{fullName2}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: "Kitty",
+                lastName: "Hello",
+                fullName: 'Hello Kitty'
+            },
+            watch: {
+                firstName: function (newValue, oldValue) {
+                    this.fullName = this.lastName + ' ' + newValue;
+                },
+                lastName: function (newValue, oldValue) {
+                    this.fullName = newValue + ' ' + this.firstName;
+                }
+            },
+            computed: {
+                fullName2: function () {
+                    return this.lastName + " " + this.firstName;
+                }
+            }
+        });
+        
+        window.setTimeout(function () {
+            vm.firstName = "Mary";
+        }, 2000);
+
+    </script>
+</body>
+</html>

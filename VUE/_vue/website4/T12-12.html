@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>監聽器(Watcher)+Ajax</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <p>
+            Ask a yes/no question:
+            <input v-model="question">
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question!'
+            },
+            watch: {
+                // whenever question changes, this function will run
+                question: function (newQuestion, oldQuestion) {
+                    this.answer = 'Waiting for you to stop typing...';
+                    this.getAnswer();
+                }
+            },
+            methods: {
+                getAnswer: function () {
+                    if (this.question.indexOf('?') === -1) {
+                        this.answer = 'Questions usually contain a question mark. ;-)';
+                        return;
+                    }
+                    this.answer = 'Thinking...';
+                    var vm = this;
+                    //發送非同步請求
+                    jQuery.ajax({
+                        method: "get",
+                        url: "https://yesno.wtf/api",
+                        dataType: "json",
+                        success: function (response) {
+                            vm.answer = response.answer;
+                        }
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+</html>

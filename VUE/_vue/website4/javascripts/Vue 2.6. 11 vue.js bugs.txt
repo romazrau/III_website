@@ -1,0 +1,5 @@
+vue.js 2.6.11(development version)
+
+Bugs:
+v-else-if
+v-once

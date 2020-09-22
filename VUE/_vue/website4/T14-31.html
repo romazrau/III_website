@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue Router</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="javascripts/vue-router 3.0/vue-router.min.js"></script>   
+    <script src="javascripts/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <style>
+        .router-link-active {
+            color: blue;
+            /*Notice that a <router-link> automatically gets the .router-link-active class when its target route is matched.*/
+        }
+        .a-button {
+            border: 1px solid #444;
+            border-radius: 5px;
+            text-decoration: none;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+    <template id="template1">
+        <div style="border:1px solid #444; margin: 10px 0; padding:20px; width:250px;">
+            <form method="get" action="AjaxServer.aspx" id="form1">
+                <p>
+                    <label>
+                        UserName: <input type='text' name="username"  value="nancy"/>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Password: <input type='password' name="password" value="davolio"/>
+                    </label>
+                </p>
+                <p>
+                    <input type='submit' />
+                </p>
+            </form>
+        </div>
+    </template>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <router-link class="a-button" :to="myDataPath">Go to「我的資料」</router-link>
+            <router-link class="a-button" :to="myCollectionListPath">Go to「我的收藏清單」</router-link>
+            <router-link class="a-button" :to="myAddressListPath">Go to「我的地址清單」</router-link>
+        </p> 
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+    <script>
+        // 1. Define components
+        const PageUser = {
+            template: 
+                `<div>
+                    <h2>哈囉, {{$route.params.id}} 您好!</h2>
+                    <h3>{{$route.params.section}}</h3>
+                </div>
+                `,
+            beforeRouteUpdate: function (to, from, next) {
+                //*******使用beforeRouteUpdate元件內導航守衛來監聽“路由參數”的變更*******//
+                if (isAuthenticated && (to.params.id != from.params.id) )//已通過身分驗證者若變更網址列上的路由參數id，則將之重新導向至登入畫面
+                    next('/login'); //重新導向
+                else
+                    next(); //放行
+            }
+        };
+        const PageLogin = {
+            template: "#template1"
+        };
+        // 2. Define routes
+        // Each route should map to a component.
+        var routes = [
+            {
+                path: '/user/:id/:section',
+                component: PageUser               
+            }, 
+            {
+                path: '/login',
+                component: PageLogin
+            },
+            {
+                path: '/',
+                component: { template: `<h5 style='color:blue'>請點選上面按鈕以瀏覽相關頁面...</h5>` }
+            },
+            {
+                path: '*',
+                component: { template: `<h5 style='color:red'>您請求的頁面不存在(Not Found)...</h5>` }
+            }
+        ];
+        // 3. Create the router instance and pass the `routes` option
+        const router = new VueRouter({
+            routes //ES6 Shorthand property names(in Object literal/Initializer)
+        });
+        var isAuthenticated = false;        
+        //*******註冊一個全域前置守衛*******//
+        router.beforeEach(function (to, from, next) {
+            if (to.path !== '/login' && !isAuthenticated)//!isAuthenticated表示尚未通過身分驗證
+                next('/login'); //重新導向
+            else
+                next(); //放行
+        });
+        // 4. Create and mount the root Vue instance.
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                myDataPath: '/',
+                myCollectionListPath: '/',
+                myAddressListPath: '/'
+            },
+            router, //ES6 Shorthand property names(in Object literal/Initializer)
+            mounted: function () {
+                //註冊使用者所填的登入資料以AJAX發送給伺服器
+                $("#form1").submit(function (){
+                    $.ajax({
+                        method: 'get',
+                        url: $(this).attr("action"),
+                        data: $(this).serialize(),
+                        dataType:'json',
+                        success: function (data) {
+                            if (data.status == 'pass') {//通過身分驗證
+                                isAuthenticated = true;
+
+                                vm.myDataPath = `/user/${data.username}/my-data`;
+                                vm.myCollectionListPath = `/user/${data.username}/my-collection-list`;
+                                vm.myAddressListPath = `/user/${data.username}/my-address-list`;
+                                
+                                $("#form1 p:last").append("<span id='pass-msg' style='color:blue;'> 恭喜您通過身分驗證!</span>");
+
+                                setTimeout(function () {
+                                    $("#pass-msg").remove();
+                                    vm.$router.push(`/user/${data.username}/my-data`); //相當於使用者點擊<router-link :to="...">
+                                }, 2000);
+                            }
+                        }
+                    });
+                    return false;
+                });
+            },
+
+        });
+    </script>
+</body>
+</html>

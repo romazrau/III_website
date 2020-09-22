@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            background-color: silver;
+            margin: 0 auto;
+            width: 80vw;
+            height: 80vh;
+            display: grid;
+            grid-template-columns: 30% 40% auto;
+            grid-template-rows: 10% auto 20% auto;
+            gap: 2px;
+        }
+
+        .grid{
+            border: 2px solid seagreen;
+        }
+    </style>
+</head>
+<body>
+    
+   <div class="container">
+       <div class="grid">grid1</div>
+       <div class="grid">grid2</div>
+       <div class="grid">grid3</div>
+       <div class="grid">grid4</div>
+       <div class="grid">grid5</div>
+       <div class="grid">grid6</div>
+       <div class="grid">grid7</div>
+       <div class="grid">grid8</div>
+       <div class="grid">grid9</div>
+       <div class="grid">grid10</div>
+       <div class="grid">grid11</div>
+       <div class="grid">grid12</div>
+   </div>
+
+   <script>
+       const randomColor = () =>{
+           return Math.floor(Math.random()*255+1);
+       };
+
+       let item = document.getElementsByClassName("grid");
+       for(let i =0;i<item.length;i++){
+           item[i].setAttribute('style',`background-color:rgb(${randomColor()},${randomColor()},${randomColor()})`);
+       }
+   </script>
+</body>
+</html>

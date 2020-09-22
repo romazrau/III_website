@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue Router</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>    
+    <style>
+        .router-link-active {
+            color: blue;
+            /*Notice that a <router-link> automatically gets the .router-link-active class when its target route is matched.*/
+        }
+        .a-button {
+            border:1px solid #444;
+            border-radius:5px;
+            text-decoration:none;
+            padding:5px;
+            margin:5px;
+        }
+        .parent-box {
+            width:300px;
+            height:200px;
+            margin:20px;
+            padding:20px;
+            box-shadow:5px 5px 10px #444;
+        }
+        .child-box {
+            border: 1px solid #999;
+            width:80%;
+            height:50%;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- use router-link component for navigation. -->
+            <!-- specify the link by passing the `to` prop. -->
+            <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+            <router-link class="a-button" to="/user/Kitty">Go to Kitty 首頁</router-link>
+            <router-link class="a-button" to="/user/Kitty/profile">Go to Kitty profile</router-link>
+            <router-link class="a-button" to="/user/Kitty/posts">Go to Kitty posts</router-link>
+        </p>
+        <!-- route outlet -->
+        <!-- component matched by the route will render here -->
+        <router-view></router-view>
+        <!-- The <router-view> here is a top-level outlet. It renders the component matched by a top level route.
+             Similarly, a rendered component can also contain its own, nested <router-view>. -->
+    </div>
+
+    <script>
+        // 1. Define components
+        // The "component" can either be an actual component constructor created via`Vue.extend()`, or just a component options object.
+        const PageUser = {
+            template: 
+                `<div class="parent-box">
+                    <h2>哈囉, kitty 您好!</h2>
+                    <router-view></router-view>
+                </div>
+                `
+        };
+        const UserHome = { template: '<div class="child-box">Home</div>' }
+        const UserProfile = { template: '<div class="child-box">Profile</div>' }
+        const UserPosts = { template: '<div class="child-box">Posts</div>' }
+       
+        // 2. Define routes
+        // Each route should map to a component.
+        var routes = [
+            {
+                path: '/user/kitty',
+                component: PageUser,
+                children: [
+                    {
+                        // UserHome will be rendered inside PageUser's <router-view>
+                        // when /user/kitty is matched
+                        path: '',
+                        component: UserHome
+                    },
+                    {
+                        // UserProfile will be rendered inside PageUser's <router-view>
+                        // when /user/kitty/profile is matched
+                        path: 'profile',
+                        component: UserProfile
+                    },
+                    {
+                      // UserPosts will be rendered inside PageUser's <router-view>
+                      // when /user/kitty/posts is matched
+                      path: 'posts',
+                      component: UserPosts
+                    }
+                ]
+            }
+        ];
+
+        // 3. Create the router instance and pass the `routes` option
+        const router = new VueRouter({
+            routes //ES6 Shorthand property names(in Object literal/Initializer)
+        });
+
+        // 4. Create and mount the root Vue instance.
+        // Make sure to inject the router with the router option to make the whole app router-aware.
+        // By injecting the router, we get access to it as this.$router as well as the current route as this.$route inside of any component.
+        new Vue({
+            el: '#app',
+            router //ES6 Shorthand property names(in Object literal/Initializer)
+        });
+    </script>
+</body>
+</html>

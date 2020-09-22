@@ -1,0 +1,20 @@
+* {
+  font-family: 標楷體;
+}
+
+.containterRow {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  background-color: beige;
+  padding: 1em;
+}
+.flexItem {
+  flex-basis: auto;
+  flex-grow: 1;
+}
+
+#red {
+  color: red;
+}
+

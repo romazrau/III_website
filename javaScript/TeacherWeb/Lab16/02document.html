@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02document.html</title>
+</head>
+<body>
+    <form>
+        First Name: <input type="text" name="fname" value="Donald"><br>
+        Last Name: <input type="text" name="lname" value="Duck"><br>
+        <img alt="101.gif" src="images/101.gif">
+        <img alt="102.gif" src="images/102.gif"><br>
+        <p>
+            <a href="http://taipei.iiiedu.org.tw">III</a><br>
+            <a href="http://www.google.com">google</a>
+        </p>
+    </form>
+    <hr>
+    <input type="button" value="URL" onclick="urlF()">
+    <input type="button" value="forms" onclick="formsF()">
+    <input type="button" value="images" onclick="imagesF()">
+    <input type="button" value="links" onclick="linksF()">
+    <input type="button" value="title" onclick="titleF()">
+    <p id="demo"></p>
+    
+    <script>
+        function urlF() {
+            var url = document.URL;
+            document.querySelector("#demo").innerHTML = url;
+        }
+
+        function formsF() {
+            var forms = document.forms.length;
+            document.querySelector("#demo").innerHTML = forms;
+        }
+
+        function imagesF() {
+            var images = document.images.length;
+            console.log(document.images);  //array like object
+            console.log(document.images[0]);  //<img .....
+            console.log(document.images[1]);
+            document.querySelector("#demo").innerHTML = images;
+        }
+
+        function linksF() {
+            var links = document.links.length;
+            document.querySelector("#demo").innerHTML = links;
+        }
+
+        function titleF() {
+            document.title="III"; 
+            let inputs=document.getElementsByTagName("input");
+            console.log(inputs);
+            console.log(inputs[0]);
+        }
+    </script> 
+</body>
+</html>

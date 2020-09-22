@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap");
+
+@font-face {
+  font-family: fontfimaly1;
+  src: url(../fonts/JustOldFashion.ttf);
+}
+
+@font-face {
+  font-family: fontfamily2;
+  src: url(../fonts/SCRIPTIN.ttf);
+}
+
+@font-face {
+  font-family: taipei1;
+  src: url(../fonts/TaipeiSansTCBeta-Bold.ttf);
+}

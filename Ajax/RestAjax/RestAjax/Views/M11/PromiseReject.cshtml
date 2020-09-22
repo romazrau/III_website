@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Promise resolve Demo</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(new Error('timeout error'));
+            }, 1000);
+        });
+        promise.then(function (value) {
+            console.log('fulfilled');
+            console.log(value);
+        }).catch(function (value) {
+            console.log('rejected');
+            console.log(value);
+        });
+        console.log("Hi");
+    </script>
+</body>
+</html>

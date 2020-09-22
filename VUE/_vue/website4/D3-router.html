@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="javascripts/vue-router 3.0/vue-router.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <nav>
+            <router-link to="/aaaa/123">2 A</router-link>
+            <router-link to="/baaa/555">2 B</router-link>
+
+        </nav>
+
+        <div>
+            <router-view>132</router-view>
+        </div>
+
+    </div>
+
+    <script>
+        //
+        let pagdefaule = {
+            template: `<div>
+                        <h2>hi {{$route.params.id}}</h2>
+                      </div>`
+        }
+
+        let pagdeB = {
+            template: `<div>
+                        <h2>hi is B {{$route.params.id}}</h2>
+                      </div>`
+        }
+
+
+
+
+
+        const routes = [
+            { path: '/aaaa/:id', component: pagdefaule },
+            { path: '/baaa/:id', component: pagdeB },
+
+        ]
+
+    //     var routes = [
+    //     { path: '/aaaa', component: PageContactInfo },
+    //     { path: '/baaa', component: PageAbout }
+    // ];
+
+        //
+        const router = new VueRouter({
+            routes,
+        })
+
+        new Vue({
+            el: "#app",
+            router: router
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>

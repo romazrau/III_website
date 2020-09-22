@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>v-cloak指令</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <style>
+        [v-cloak] {  display: none;   }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1> Hello! <span v-cloak>{{ message }}</span></h1>
+    </div>
+    <script>
+        var vm = new Vue({            
+            data: {
+                message: 'Vue...'
+            }
+        });
+
+        setTimeout(function() {
+             vm.$mount("#app"); //手動起始"模板編譯"
+        }, 2000);
+    </script>
+</body>
+</html>

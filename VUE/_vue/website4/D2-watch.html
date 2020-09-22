@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./javascripts//vue 2.6.11/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="qus">
+        <h3>{{ans}}</h3>
+    </div>
+
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data:{
+            qus: "",
+            ans: "輸入個什麼吧"
+        },
+        watch:{
+            qus: function(newVal, oldVal){
+                // this.ans = newVal +　"+" + oldVal;
+                this.getAns();
+            }
+        },
+        methods:{
+            getAns: function(){
+                if(this.qus.indexOf("?") === -1){
+                    this.ans = "結束了嗎? +個問號優";
+                    return;
+                }
+                this.ans = "thinks .....";
+                let vm = this;
+                fetch("https://yesno.wtf/api",{
+                    methid: "GET"
+                })
+                .then((res)=>res.json())
+                .then((data)=>{
+                    console.log(data);
+                    vm.ans = data.answer
+                })
+
+
+            }
+        }
+        
+    })
+
+</script>
+
+
+
+</html>

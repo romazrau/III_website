@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02closure</title>
+</head>
+<body>
+   <script>
+    function f() {
+        var a = 1;
+        var b=function () {  //Closure function 
+            a++;                         
+            return a;
+        }
+        return b;
+    }
+    var c = f();
+    // console.log("f()=" + f());
+    // console.log("c="+c);
+    console.log("c()="+c());  //會得到什麼結果 1
+
+    
+    
+   </script> 
+</body>
+</html>

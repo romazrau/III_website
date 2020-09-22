@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01Date.html</title>
+</head>
+<body>
+    <script>
+        //建立日期物件語法 1
+        let d = new Date();
+        console.log(d);
+
+        //建立日期物件語法 2
+        // d=new Date("2020/6/25 1:00:05 pm");
+        d=new Date("2020/6/25 13:00:05");
+        console.log(d);
+
+        //建立日期物件語法 3
+        d=new Date(2020,5,25);
+        console.log(d);
+
+        let theYear = d.getFullYear() - 1911;
+        let theMonth = d.getMonth() + 1;
+        let theDate = d.getDate();
+        //document.write(d);
+        document.write("民國" + theYear + "年" + theMonth + "月" + theDate + "日" + "<br>");
+
+
+        // let d2=new Date("2020/6/31");
+        // console.log(d2);  //2020/7/1
+        // let d2=new Date("2020/6/32");
+        // console.log(d2);  //Invalid Date
+
+        // let d2=new Date("2020/6/30");
+        // console.log(d2);  //2020/6/30
+
+        // let d3=new Date(2020,5,32);
+        // console.log(d3);  //2020/7/2
+
+        let d4=new Date(2020,5,0);  //6月的第0天,就是5月的最後一天
+        console.log(d4);
+        
+    </script>
+</body>
+</html>

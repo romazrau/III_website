@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+        <title>05DOM2.html</title>        
+	</head>
+
+	<body>
+		<div id="iddiv">div</div>
+		
+        <script>            
+            let theDIV = document.getElementById("iddiv");  //取得div物件
+
+            let eleP = document.createElement("p");
+            eleP.innerHTML="Hello World";           
+
+            theDIV.appendChild(eleP);                      
+        </script>
+	</body>
+</html>

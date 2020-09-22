@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: 標楷體;
+        font-size: 16px;
+      }
+      .form div {
+        width: 50vw;
+        border-bottom: 1px solid rgb(187, 187, 187);
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
+      }
+      .form_style{
+        width: 10em;
+        float: left;
+        text-align: right;
+      }
+      .center {
+        text-align: center;
+      }
+      textarea{
+          resize:none;
+      }
+      fieldset{
+          width: 55vw;
+          border: 2px solid rgb(145, 116, 96);
+          border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form
+        class="form"
+        action="#"
+        method="GET"
+        enctype="multipart/form-data"
+      >
+
+
+      <fieldset><legend>基本資料</legend>
+        
+        <div>
+          <label class="form_style" for="account">姓名:</label>
+          <input type="text" name="account" id="account" value="guest" />
+        </div>
+        <div>
+            <label class="form_style" for="">性別</label>
+            <label>
+                <input type="radio" name="gender" value="male">男</label>
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female">女</label>
+        </div>
+
+       <div>
+           <label class="form_style" for="">興趣</label>
+           <label ><input type="checkbox" name="hobby" value="qaq">運動</label>
+           <label ><input type="checkbox" name="hobby" value="aza">追據</label>
+           <label ><input type="checkbox" name="hobby" value="zwz">園藝</label>
+       </div>
+
+        <div>
+          <label class="form_style" for="password">密碼:</label>
+          <input type="password" name="password" maxlength="8" />
+        </div>
+
+    </fieldset>
+    <fieldset><legend>住址</legend>
+        <div>
+            <label class="form_style" for="">居住地</label>
+            <select name="liveingin">
+                <option value="TPE">台北市</option>
+                <option value="TPH">新北市</option>
+                <option value="TYU" selected>桃園市</option>
+                <option value="HSC">新竹市</option>
+            </select>
+        </div>
+
+        <div><label class="form_style" for="">地址:</label><input type="text"></div>
+    </fieldset>
+    <fieldset><legend>其他:</legend>
+        <div><label class="form_style" for="">檔案</label><input type="file"></div>
+
+        <div>
+          <label class="form_style" for="comment">留言</label>
+          <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+        </div>
+    </fieldset>
+
+        <div class="center">
+          <input type="submit" value="送出" />
+          <input type="reset" value="清除" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Components</title>
+    <script src="javascripts/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+        }
+
+            .tab-button:hover {
+                background: #e0e0e0;
+            }
+
+            .tab-button.active {
+                background: #e0e0e0;
+            }
+
+        .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-for="tab in tabs"
+                v-bind:key="tab"
+                v-bind:class="['tab-button', { active: currentTab === tab }]"
+                v-on:click="currentTab = tab">
+            {{ tab }}
+        </button>        
+        <keep-alive>
+            <!--元件會在`currentTabComponent`改變時改變 -->
+            <component v-bind:is="currentTabComponent" class="tab"></component>
+        </keep-alive>
+    </div>
+    <script>
+        //註冊一個名為tab-home的全域的新元件
+        Vue.component("tab-home", function (resolve, reject) {
+            $.getScript("./T11-31.js", function () {
+                resolve(componentOptionsObject);
+            });
+            //jQuery.getScript(url, success)
+            //Load a JavaScript file from the server using a GET HTTP request, then execute it.
+        });
+        Vue.component("tab-posts", {
+            template: "<div>Posts component<br><input type='text' /></div>"
+        });
+        Vue.component("tab-archive", {
+            template: "<div>Archive component<br><input type='text' /></div>"
+        });
+        new Vue({
+            el: "#app",
+            data: {
+                currentTab: "Home",
+                tabs: ["Home", "Posts", "Archive"]
+            },
+            computed: {
+                currentTabComponent: function () {
+                    return "tab-" + this.currentTab.toLowerCase();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

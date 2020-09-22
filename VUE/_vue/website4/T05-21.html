@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>表單輸入綁定</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--文字-->
+        使用者名稱: <input v-model="username" placeholder="請輸入使用者名稱" />
+        <p>您的使用者名稱: {{ username }}</p>
+        <hr />
+
+        <!--多行文字-->
+        地址:<br />
+        <textarea v-model="address" placeholder="請輸入地址"></textarea>
+        <p>您的地址:<br />{{ address}}</p>
+        <hr />
+
+        <!--複選框-->
+        <!--單個複選框，綁定到布林值-->
+        <label for="vegetarian">吃素</label> <input v-model="veg" type="checkbox" id="vegetarian" /><br />
+        <p>您是素食者: {{ veg }}</p>
+        <!--多個複選框，綁定到同一個陣列-->
+        <fieldset style="width:100px;">
+            <legend>興趣</legend>
+            <label for="poem">吟詩</label> <input v-model="hobbies" type="checkbox" id="poem" value="吟詩" /><br />
+            <label for="against">作對</label> <input v-model="hobbies" type="checkbox" id="against" value="作對" /><br />
+            <label for="play">彈琴</label> <input v-model="hobbies" type="checkbox" id="play" value="彈琴" />
+        </fieldset>
+        <p>您的興趣計有: {{ hobbies }}</p>
+        <hr />
+
+        <!--單選按鈕-->
+        <fieldset style="width:100px;">
+            <legend>性別</legend>
+            <label for="male">男</label> <input v-model="sex" type="radio" id="male" value="男" />
+            <label for="female">女</label> <input v-model="sex" type="radio" id="female" value="女" />
+        </fieldset>
+        <p>您的性別: {{ sex }}</p>
+        <hr />
+
+        <!--選擇框單選時-->
+        <fieldset style="width:150px;">
+            <legend>英文程度</legend>
+            <select v-model="level">
+                <option disabled="disabled" value="">請輸入英文程度</option>
+                <option>A級</option>
+                <option>B級</option>
+                <option>C級</option>
+            </select>
+        </fieldset>
+        <p>您的英文程度: {{ level }}</p>
+
+        <!--選擇框多選時(綁定到一個陣列)-->
+        <fieldset style="width:150px;">
+            <legend>專長(多選)</legend>
+            <select v-model="specialties" multiple size="5">
+                <!--靜態選項(Static options)-->
+                <option disabled="disabled" value="">請輸入您的專長:</option>
+                <option>JavaScript</option>
+                <option>C#</option>
+                <option>Python</option>
+                <option>SQL</option>
+            </select>
+        </fieldset>
+        <p>您的專長: {{ specialties }}</p>
+        <hr />
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                address: '',
+                veg: false,
+                hobbies: [],
+                sex: '男',
+                level: '',
+                specialties: [] 
+            }
+        })
+    </script>
+</body>
+</html>

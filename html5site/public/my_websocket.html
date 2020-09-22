@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="show"></div>
+
+
+    <script>
+        const divShow = document.querySelector("#show");
+
+        let host = "ws://echo.websocket.org";
+        let socket = new WebSocket(host);
+
+        socket.addEventListener('open', (evt)=>{
+            divShow.innerHTML += "連線成功 <br/>";
+            socket.send('Hello Socket!!');
+        })
+
+        socket.addEventListener('message', (evt)=>{
+            divShow.innerHTML += evt.data + "<br/>";
+            socket.close();
+        })
+
+        socket.addEventListener("close", (evt)=>{
+            divShow.innerHTML += "連線關閉!! <br/>"
+        })
+
+
+    </script>
+
+    
+</body>
+</html>

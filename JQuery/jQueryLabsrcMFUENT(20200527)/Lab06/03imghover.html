@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <title>02hover.html</title>
+</head>
+<body> 
+    <img id="img1" class="i" src="images/star.gif" />
+
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script>
+        let flag=true;
+        $("img").hover(function(){                
+            $(this).attr("src","images/chngstar.gif");                
+        },function(){                
+            $(this).attr("src","images/star.gif");                
+        });            
+    </script> 
+</body>  
+</html>

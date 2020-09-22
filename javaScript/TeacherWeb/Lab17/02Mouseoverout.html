@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02Mouseoverout.html</title>
+</head>
+<body>
+    <img id="idimg" src="Images/star.gif" />
+    <script>        
+        document.querySelector("#idimg").onmouseover=mouseover;
+        document.querySelector("#idimg").onmouseout=mouseout;      
+
+        function mouseover() {
+           document.querySelector("#idimg").src="Images/chngstar.gif";
+        }
+
+        function mouseout() {
+            document.querySelector("#idimg").src="Images/star.gif";
+        }
+    </script>
+</body>
+</html>

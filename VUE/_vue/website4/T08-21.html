@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Function chaining</title>
+</head>
+<body>
+    <h3>Function chaining</h3>
+    <script>
+        function f1() {
+            var v1 = "f1...";
+            console.log(v1);
+            return this; //this: window
+        }
+        function f2() {
+            let v1 = "f2...";
+            console.log(v1);
+            return this; //this: window
+        }
+        f1().f2();
+        //print: f1...
+        //print: f2...
+
+        class Dog {            
+            constructor(name) {
+                this.name = name;
+            }
+            //原型方法
+            cry() {
+                console.log(this.name + "嘻嘻嘻...");
+                return this; //this: current object
+            }
+            laugh() {
+                console.log(this.name + "哇哇哇...");
+                return this; //this: current object
+            }
+        }
+        new Dog("小白").cry().laugh();
+        //print: 小白嘻嘻嘻...
+        //print: 小白哇哇哇...        
+    </script>
+</body>
+</html>

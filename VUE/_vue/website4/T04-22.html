@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>條件呈現(Conditional Rendering)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-if="rank=='A'">極品</div>
+        <div v-else-if="rank=='B'">高級品</div>
+        <div v-else-if="rank=='C'">良品</div>
+        <div v-else="rank=='D'">次級品</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                rank: 'C'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02Arraycopy.html</title>
+</head>
+<body>
+    <script>
+        //Array淺層複製
+        // var arr1 = [1, 2, 3, ["a", "b", "c"]];
+        // var arr2=arr1;
+        // var arr3 = arr1.slice(0);  //只有複製第一層
+        // arr1[3][1]="replace";
+        // arr1[1]="d";
+        // console.log("arr1:",arr1);        
+        // console.log("arr2:",arr2) ;
+        // console.log("arr3:",arr3) ; 
+
+        //Array深層複製
+        var arr1 = [1, 2, 3, ["a", "b", "c"]];
+        // var arr2=arr1;
+        var str = JSON.stringify(arr1);  //把陣列轉成字串
+        var arr3 = JSON.parse(str);     //把字串轉成新的陣列
+        arr1[3][1]="replace";
+        arr1[1]="d";
+
+        console.log("arr1:",arr1);        
+        // console.log("arr2:",arr2);
+        console.log("arr3:",arr3);   //arr3[1]=2,arr3[3][1]= "b"  
+        console.log("str:", str);
+       
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>v-for指令</title>
+    <script src="javascripts/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">
+                {{item}}
+            </li>
+        </ul>
+        <hr />
+        <ul>
+            <li v-for="(student,index) in students" v-bind:key="student.id">
+                {{index}}-{{student.name}}-{{student.age}}歲
+                <input type="text" size="20" />
+            </li>
+        </ul>
+        <hr />
+        <div v-for="(value,name,index) in book">{{index}}-{{name}}:{{value}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {                
+                items: ["Kitty", "Mary", "Peter"],
+                students: [{ name: 'Kitty', age: 15, id: 1 }, { name: 'Mary', age: 18, id: 2 }],
+
+                book: { 書名: "vue入門", 作者: "史可法", 出版社: "天龍國出版社" }
+            }
+        });
+        //測試: v-for with/without  v-bind:key 的效果
+        $("#app input:eq(0)").val("aaa");
+        $("#app input:eq(1)").val("bbb");
+        setTimeout(function () {
+            vm.students.reverse(); //變更陣列資料(students)的元素順序時，若對應DOM元素有綁定key，則Vue將據以移動DOM元素的相關位置            
+        }, 2000); 
+    </script>
+</body>
+</html>

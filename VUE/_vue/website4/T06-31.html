@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自定義指令</title>    
+    <script src="javascripts/vue 2.6.11/vue.js"></script>   
+</head>
+<body>
+    <div id="app">
+        <p>使用者名稱 <input v-focus  type="text" name="username" size="10"/></p>
+        <p>密碼 <input  type="text" name="password" size="10" /></p>        
+    </div>
+    <script>        
+        // Register a global custom directive called `v-focus`
+        //Vue.directive( id, [definition] ) Arguments:{string} id, {Function | Object} [definition]
+        Vue.directive("focus", {
+            // When the bound element is inserted into the DOM...
+            inserted: function (el) {
+                el.focus(); // Focus the element
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+            directives: {
+                // Register a local custom directive called `v-focus` (優先於global版)
+                focus: {
+                    // directive definition
+                    inserted: function (el) {
+                        el.focus();// Focus the element
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

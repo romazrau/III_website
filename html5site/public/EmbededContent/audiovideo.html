@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio Video Tag</title>
+    <style>
+       .v{
+           margin:5px;
+           box-shadow: 3px 2px 4px silver;
+       }
+    </style>
+</head>
+<body>
+    <autio src="./musics/我們都寂寞.mp3"
+            preload="auto"
+            loop
+            autoplay
+            controls>
+        <a href="./musics/十年.mp3">
+            音樂未正常顯示時，顯示此連結
+        </a>
+    </autio>
+
+<audio autoplay controls>
+    <source src="./musics/兄妹.mp3">
+    <source src="song.mp3">
+    <source src="song.wav">
+</audio>
+
+
+
+<video src="./videos/big_buck_bunny.webm"
+        autoplay
+        controls
+        width="480"
+        height="360"
+        poster="../images/cars2.jpg">
+    你的瀏覽器不支援撥放
+    <track kind="subtitles" src="./videos/bunny_zhtw.vtt" 
+            srclang="zh-tw" label="繁體中文">
+    <track kind="subtitles" src="./videos/bunny_en.vtt" 
+            srclang="en" label="English">
+</video>
+
+
+
+<video controls width="480" height="360">
+    <source src="videos/big_buck_bunny.mp4" 
+            type="video/mp4; codecs='avc1.4D401E, mp4a.40.2'">
+    <source src="videos/big_buck_bunny.ogv" 
+            type="video/ogg; codecs='theora, vorbis'">
+    <source src="videos/big_buck_bunny.webm" 
+            type="video/webm; codecs='vp8.0, vorbis'">
+    你的瀏覽器不支援撥放
+</video>
+   
+
+   
+</body>
+</html>

@@ -1,0 +1,21 @@
+@keyframes a-showCard-hover {
+  0% {
+    box-shadow: 0px 0px 10px 8px #e9c08f;
+  }
+  100% {
+    box-shadow: 5px 5px 10px 5px #e9c08f;
+  }
+}
+
+@keyframes a-showCard-hover-over {
+  0% {
+    box-shadow: 5px 5px 10px 5px #e9c08f;
+  }
+  100% {
+    box-shadow: 0px 0px 10px 8px #e9c08f;
+  }
+}
+
+
+
+

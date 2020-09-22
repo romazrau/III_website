@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>變數宣告的方式與作用域</title>
+</head>
+<body>
+    <h3>變數宣告的方式與作用域</h3>
+    <script>
+        {
+            var v1 = 100; //全域變數
+            let v2 = 100; //區塊變數
+            console.log("v1=%d v2=%d", v1, v2);//print: v1=100 v2=100
+        } 
+        console.log("v1=%d", v1);//print: v1=100
+        //console.log("v2=%d", v2); //Uncaught ReferenceError: v2 is not defined
+
+        function f1() {
+            var v3 = 100; //區域變數
+            let v4 = 100; //區塊變數
+            console.log("v3=%d v4=%d", v3, v4); //print v3=100 v4=100
+        }
+        //console.log("v3=%d", v3); //Uncaught ReferenceError: v3 is not defined
+        //console.log("v4=%d", v4); //Uncaught ReferenceError: v4 is not defined
+        f1();
+        //console.log("v3=%d", v3); //Uncaught ReferenceError: v3 is not defined
+        //console.log("v4=%d", v4); //Uncaught ReferenceError: v4 is not defined
+    </script>
+</body>
+</html>

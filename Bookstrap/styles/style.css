@@ -1,0 +1,18 @@
+p{
+    animation: p-animation infinite 3s ease;
+
+}
+
+
+@keyframes p-animation{
+    0%{
+        color: chocolate
+    }
+    50%{
+        color: darkcyan;
+    }
+    100%{
+        color: chocolate;
+    }
+}
+

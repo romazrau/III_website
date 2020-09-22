@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Transition Mode</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <style>
+        .v-enter-active, .v-leave-active {
+            transition: opacity .5s;
+        }
+        .v-enter, .v-leave-to {
+            opacity: 0;
+        }
+        #app fieldset {
+            width:300px; height:80px; margin:20px auto;
+        }       
+    </style>
+</head>
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>多個元素間互相切換的過渡</legend>
+            <transition mode="out-in">
+                <button v-if="on" key="on" @click="on=false">
+                    On
+                </button>
+                <button v-else="" key="off" @click="on=true">
+                    Off
+                </button>
+            </transition>
+        </fieldset>
+        <fieldset>
+            <legend>多個元件間互相切換的過渡</legend>
+            <button key="on" @click="currentCompIndex = ++currentCompIndex%2">切換元件...</button>
+            <transition mode="out-in">
+                <component v-bind:is="componentIds[currentCompIndex]"></component>
+            </transition>
+        </fieldset>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                on: true,
+                currentCompIndex: 0,
+                componentIds: ['componentA','componentB']
+            },
+            components: {
+                componentA: {
+                    template:`<p>Component A</p>`
+                },
+                componentB: {
+                    template: `<p>Component B</p>`
+                }
+            }
+        })
+    </script>
+</body>
+</html>

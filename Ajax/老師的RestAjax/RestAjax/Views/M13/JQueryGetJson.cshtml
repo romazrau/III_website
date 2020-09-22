@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <h2>Get JSON File Demo</h2>
+    <table border='1' id="demo"></table>
+    <script>
+        $.getJSON("/res/book.json", function (books) {
+            var txt = "<tr><th>書籍名稱<th>作者名<th>出版社名<th>出版日期<th>價格";
+            for (let i = 0; i < books.length; i++) {
+                txt += "<tr><td>" + books[i].title;
+                txt += "<td>" + books[i].author;
+                txt += "<td>" + books[i].publisher;
+                txt += "<td>" + books[i].publishDate;
+                txt += "<td>" + books[i].price;
+            }
+            $("#demo").html(txt);
+        });
+    </script>
+</body>
+</html>

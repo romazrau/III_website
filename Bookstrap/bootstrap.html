@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="CONTAINER">
+      <div class="row">
+        <div class="col-lg-6 col-md-5 Rcolor">1</div>
+        <div class="col-lg-6 col-md-7 Rcolor">2</div>
+        <div class="col-lg-6 col-md-5 Rcolor">3</div>
+        <div class="col-lg-6 col-md-7 Rcolor">4</div>
+      </div>
+
+      <div class="row">
+        <div class="col Rcolor">1</div>
+        <div class="col Rcolor">2</div>
+        <div class="col Rcolor">3</div>
+        <div class="col Rcolor">4</div>
+        <div class="col Rcolor">5</div>
+        <div class="col Rcolor">6</div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h1>hello world</h1>
+          <h2>hello world</h2>
+          <h3>hello world</h3>
+          <h4>hello world</h4>
+          <h5>hello world</h5>
+          <h6>hello world</h6>
+          <h1 class="display-1">hello world</h1>
+          <h1 class="display-4 text-center">hello world</h1>
+        </div>
+      </div>
+
+    
+          <table class="table">
+              <thead>55</thead>
+              <tbody>
+                  <tr>
+                     <th scope="col">1</th>
+                     <th scope="col">2</th>
+                     <th scope="col">3</th>
+                     <th scope="col">4</th> 
+                  </tr>
+                  <tr>
+                      <td scope="row">1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                  </tr>
+                  <tr>
+                      <td scope="row">1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                  </tr>
+                  <tr>
+                      <td scope="row">1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                  </tr>
+              </tbody>
+          </table>
+
+    </div>
+
+    <script>
+      const randomColor = () => {
+        return Math.floor(Math.random() * 255 + 1);
+      };
+
+      let Rcolor = document.querySelectorAll(".Rcolor");
+      for (let i = 0; i < Rcolor.length; i++) {
+        Rcolor[i].setAttribute(
+          "style",
+          `background-color:rgb(${randomColor()},${randomColor()},${randomColor()})`
+        );
+      }
+    </script>
+  </body>
+</html>

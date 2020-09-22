@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件傳遞</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+            <blog v-for="item in posts" 
+                v-bind:key="item.id"   v-bind:post="item"
+                v-on:enlarge-text="postFontSize += $event"
+                v-on:reduce-text="onReduceText" >
+            </blog>
+        </div>
+    </div>  
+    <script>
+        //定義(註冊)一個名為blog的全域的新元件
+        Vue.component('blog', {
+            props: ['post'],
+            template: `
+            <div class="blog">
+              <h4>{{ post.title }}</h4>             
+              <h3 v-html="post.content"></h3>
+              <button v-on:click="$emit('enlarge-text', 0.1)">放大文字</button>
+              <button v-on:click="$emit('reduce-text', 0.1)">縮小文字</button><hr/>
+            </div>
+          `
+        });
+        new Vue({
+            el: "#app",
+            data: {
+                posts: [
+                    { id: 1, title: '我的最愛看', content: '<div style="color:red">知名山水美景...</div>' },
+                    { id: 2, title: '我的最愛吃', content:'<div  style="color:green">經典小吃美食...</div>'  },
+                    { id: 3, title: '我的最愛玩', content: '<div  style="color:blue">刺激雲霄飛車...</div>' }
+                ],
+                postFontSize: 1
+            },
+            methods: {
+                onReduceText: function (reduceAmount) {
+                    this.postFontSize -= reduceAmount;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

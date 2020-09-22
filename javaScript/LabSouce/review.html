@@ -1,0 +1,16 @@
+<div id="div1">div</div>
+<input type="text" id="idName" value="123" onchange="change()" />
+<button onclick="change()">change</button>
+
+<script>
+  var mydiv = document.getElementById("div1");
+  console.log(mydiv.innerHTML);
+
+  const change = () => {
+    var myText = document.getElementById("idName");
+    console.log(myText.value);
+    console.log(myText.id);
+  };
+
+
+</script>

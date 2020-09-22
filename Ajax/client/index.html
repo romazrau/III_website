@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>button</title>
+</head>
+<body>
+    
+    <button id="btnMemberlist">cick me</button>
+    <table id="table"></table>
+
+
+    <script>
+        const data2table = (o ) =>{
+            let s = "<tr>"
+            s += `<td>${o.fId}</td>`;
+            s += `<td>${o.fName}</td>`;
+            s += `<td>${o["account type"]}</td>`;
+            s += "</tr>"
+            return s;
+
+        }
+
+        document.querySelector("#btnMemberlist").addEventListener(
+            "click",
+            doUpload
+        );
+
+        function doUpload() {
+            fetch('http://localhost:51346/api/Member', {
+                method: 'GET',
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+               let dom = document.querySelector("#table");
+               let obj = JSON.parse(data);
+               console.group();
+               [...obj].map((e)=>{
+                   console.log(e);
+                   dom.innerHTML += data2table(e);
+               })
+               console.groupEnd();
+            });
+        }
+    </script>
+</body>
+</html>

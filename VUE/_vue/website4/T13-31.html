@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Transition Mode</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="javascripts/jquery-3.4.1/jquery-3.4.1.min.js"></script>   
+    <script src="javascripts/jquery ui 1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">
+            Toggle
+        </button>
+        <transition v-on:before-enter="beforeEnter"
+                    v-on:enter="enter"                   
+                    v-on:leave="leave"                    
+                    v-bind:css="false">   <!--Vue可省去偵測CSS Transition的動作-->
+            <div v-if="show">
+                Demo
+            </div>
+        </transition>
+    </div>
+    <script>        
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                beforeEnter: function (el) {
+                    $(el).css({ fontSize: '1em', opacity: 0 });
+                },
+                enter: function (el, done) {
+                    $(el).animate({ opacity: 1, fontSize: '4em' }, 1000, 'easeOutBounce');
+                },
+                leave: function (el, done) {                    
+                    $(el).animate({ opacity: 0, fontSize: '1em' }, 600, 'easeInSine');
+                }
+            }
+        });
+        vm.show = true;
+    </script>
+</body>
+</html>

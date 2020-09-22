@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>event bus</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <component-a></component-a>
+        <component-b></component-b>
+    </div>
+    <script>
+        const eventBus = new Vue();
+
+        Vue.component('component-a', {
+            methods: {
+                emitMessage: function (msg) {
+                    eventBus.$emit('msg-event', msg);
+                }
+            },
+            template:
+                    `
+                    <fieldset>
+                        <legend>component-a</legend>
+                        <button v-on:click='emitMessage("welcome...")'>發送訊息...</button>
+                    </fieldset>
+                    `
+        })
+        Vue.component('component-b', {
+            data: function () {
+                return {
+                    count:0,
+                    receivedMessage:''
+                }
+            },
+            mounted: function () {
+                var thisComponent = this;
+                eventBus.$on('msg-event', function (msg) {
+                    thisComponent.receivedMessage = msg;
+                    thisComponent.count++;
+                })
+            },
+            template:
+                     `
+                     <fieldset>
+                        <legend>component-b</legend>
+                        監聽"component-a"的msg-event事件: ({{count}}) {{receivedMessage}}
+                     </fieldset>
+                     `
+        })
+        new Vue({
+            el: "#app"
+        });
+    </script>
+</body>
+</html>

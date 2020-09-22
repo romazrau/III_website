@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02setTimeout.html</title>
+</head>
+<body>    
+	<input type="button" id="idbutstop" value="停止轉向連結" onclick="stopf()" />
+
+    <script>       
+
+        function stopf() {
+                //window.clearTimeout-停止計時器            
+                clearTimeout(tohttp);
+        }
+
+        //轉向連結到 http://taipei.iiiedu.org.tw
+        //slide80,location.href-轉向連結到其它網址
+        let tohttp = setTimeout(
+            () => location.href = "http://taipei.iiiedu.org.tw",
+            2000
+        );
+
+        
+    </script>
+    
+</body>
+</html>

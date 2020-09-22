@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01OperatorPrecedence.html</title>
+</head>
+<body>
+    <script>  
+        //算術運算子++
+        var a=1;
+        a=a+1;
+        console.log(a);
+        a=1;
+        a+=1;
+        console.log(a);
+        a=1;
+        a++;
+        console.log(a);
+        a=1;
+        ++a;
+        console.log(a);
+
+        var a=1;
+        var b=10*++a;  //1. ++a;  2. b=10*a;
+        console.log("b="+b);  //20
+        console.log("a="+a);
+        a=1;
+        b=10*a++;  //1. b=10*a;   2. a++;
+        console.log("b="+b);  //10
+        console.log("a="+a);
+        
+        //關係運算子
+        //值相等== 
+        //值及資料類型相等===
+        var x=5;
+        var y="5";
+        console.log(x==y);  //true
+        console.log(x===y);  //false
+
+        //邏輯運算子
+        console.log(2||7);  //2
+        console.log(0||3);  //3
+        var z=2;
+        console.log(z|| 6);
+        
+       
+        
+        
+        //三元運算子（判斷式）?（真時回傳值）:（假時回傳值）
+        x=-3;        
+        var y=x>0?x:-1;
+
+        // if(x>0)
+        //     y=x;
+        // else
+        //     y=-1;
+
+        console.log("y="+y);   //-1
+    </script>
+        
+</body>
+</html>

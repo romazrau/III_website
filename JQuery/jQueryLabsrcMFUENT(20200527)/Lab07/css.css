@@ -1,0 +1,10 @@
+.box3 {
+  width: 60px;
+  height: 60px;
+  background: red;
+  transition: all 5s;
+}
+.box3:hover {
+  width: 500px;
+  background: blue;
+}

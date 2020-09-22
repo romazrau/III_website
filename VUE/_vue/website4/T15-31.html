@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vuex</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="javascripts/vuex 3.3.0/vuex.js"></script>
+    <style>
+        .main-box {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            padding: 50px;
+            box-shadow: 5px 5px 10px #999;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>    
+    <div id="app">
+        <div class="main-box">
+            <p>{{ count }}</p>
+            <p>{{ message('您點擊的按鈕次數: ') }}</p>
+            <p>
+                <button @click="incr">+</button>
+                <button @click="decr">-</button>
+                <button @click="incr2(2)">+2</button>
+                <button @click="decr2(2)">-2</button>
+            </p>
+            <message-box></message-box>
+        </div>        
+    </div>
+    <script>
+        const store = new Vuex.Store({
+            state: {
+                count: 0
+            },
+            getters: {
+                count: function (state, getters) {
+                    return state.count; //元件可以用屬性形式(store.getters.count)存取本getter
+                },
+                msg: function (state, getters) {
+                    return function (prefix) { return prefix + state.count };//元件可以用方法形式(store.getters.msg('...'))存取本getter
+                }
+            },
+            mutations: {
+                increment: function (state) { state.count++; },
+                decrement: function (state) { state.count--; },                
+                //------------Mutation with payload(載荷)------------//
+                increment2: function (state, amount) { state.count += amount; },
+                decrement2: function (state, amount) { state.count -= amount; }
+            },
+            actions: {
+                increment: function (context) {
+                    //非同步操作...
+                    context.commit('increment');
+                },               
+                decrement: function (context) {
+                    //非同步操作...
+                    context.commit('decrement');
+                },                
+                //------------Action with payload(載荷)------------//
+                increment2: function (context, amount) { 
+                    //非同步操作...
+                    context.commit('increment2', amount); 
+                },
+                decrement2: function (context, amount) {
+                    //非同步操作...
+                    context.commit('decrement2', amount);
+                }
+            }
+        });
+        const MessageBox = {
+            template: `<h1 @click='increment'>{{count}}</h1>`,
+            computed: {
+                ...Vuex.mapGetters( ['count'] ) //展開後如下:
+                //count: function () {
+                //    return this.$store.getters.count;
+                //}
+
+                //註: ...為展開運算子(Spread operator) 
+                //ES2018支援Spread in object literals
+                //例如: { ...{ prop1: 'xxx', prop2: 'yyy' } } 結果為 { prop1: 'xxx', prop2: 'yyy' }
+            },
+            methods: {               
+                ...Vuex.mapMutations(['increment'])//展開後如下:
+                //increment: function() {
+                //    this.$store.commit('increment');
+                //}
+            }
+        };
+        var vm = new Vue({
+            el: '#app',
+            computed: {
+                ...Vuex.mapGetters(['count']), //展開後如下:
+                //count: function () {
+                //    return this.$store.getters.count;
+                //},
+                ...Vuex.mapGetters({ 'message': 'msg' }),  //展開後如下:
+                //message: function () {                    
+                //    return this.$store.getters.msg;
+                //}
+            },
+            methods: {              
+                ...Vuex.mapMutations({
+                    incr: 'increment', decr: 'decrement',
+                    incr2: 'increment2', decr2: 'decrement2'
+                }), //展開後如下:
+                //incr: function() {
+                //    this.$store.commit('increment');
+                //},
+                //decr: function() {
+                //    this.$store.commit('decrement');
+                //},
+                //incr2: function (amount) {
+                //    this.$store.commit('increment2', amount);//Mutation with payload(載荷)
+                //},
+                //decr2: function (amount) {
+                //    this.$store.commit('decrement2', amount); //Mutation with payload(載荷)
+                //},
+                
+
+                //...Vuex.mapActions({
+                //    incr: 'increment', decr: 'decrement',
+                //    incr2: 'increment2', decr2: 'decrement2'
+                //}),//展開後如下:
+                //incr: function() {
+                //    this.$store.dispatch('increment');
+                //},
+                //decr: function() {
+                //    this.$store.dispatch('decrement');
+                //},
+                //incr2: function (amount) {
+                //    this.$store.dispatch('increment2', amount);//Action with payload(載荷)
+                //},
+                //decr2: function (amount) {
+                //    this.$store.dispatch('decrement2', amount); //Action with payload(載荷)
+                //},
+            },
+            components: {
+                MessageBox: MessageBox
+            },
+            store: store,
+            created: function () { //for測試
+                console.log(this.$store.getters.count); //0
+                console.log(this.count); //0
+                console.log(this.$store.getters.msg('您點擊的按鈕次數: ')); //您點擊的按鈕次數: 0
+                console.log(this.message('您點擊的按鈕次數: ')); //您點擊的按鈕次數: 0
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+	<h2>Get Async Demo</h2>
+	<div id="demo"></div>
+	<script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200)
+				document.getElementById("demo").innerHTML = xhttp.responseText;
+		}
+		xhttp.open("GET", "/M07/NameCity?name=Henry&city=Taipei", true);
+		xhttp.send();
+	</script>
+</body>
+</html>

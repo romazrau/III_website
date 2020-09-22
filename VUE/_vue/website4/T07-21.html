@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>陣列常用的方法</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <script>
+        var nums = [10, 25, 33, 8, 2, 11];
+        var p = document.getElementById("p1");
+
+        var num = nums.find(function (value, index, array) {
+            return value > 10;
+        });
+        p.innerHTML = `num=${num}<hr/>`; //num=25
+        //`...` 樣板字面值(Template literals)是允許嵌入運算式的字串字面值(string literals)。       
+        //------------------------------------------------------------------//
+        var index = nums.findIndex(function (value) {
+            return value > 10;
+        });        
+        p.innerHTML += `index=${index}<hr/>`; //index=1        
+        //------------------------------------------------------------------//
+        var arr2 = nums.filter( function (el) {
+            return el>10;
+        });
+        p.innerHTML += `nums.filter()=>${arr2.toString()}<hr/>`; //nums.filter()=>25,33,11       
+        //------------------------------------------------------------------//
+        s = "";
+        nums.forEach(function (el, index) {
+            s += `${index}:${el} `;
+        });
+        p.innerHTML += `nums.forEach()=>${s}<hr/>`; //nums.forEach()=>0:10 1:25 2:33 3:8 4:2 5:11        
+        //------------------------------------------------------------------//
+    </script>
+</body>
+</html>

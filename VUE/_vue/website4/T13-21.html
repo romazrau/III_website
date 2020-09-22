@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Transition Mode</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">   
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="show = !show">
+            切換「彈右離開」與「抖動進入」
+        </button>
+        <!--使用第三方套件(Animate.css)-->
+        <transition enter-active-class="animated tada"
+                    leave-active-class="animated bounceOutRight">
+            <h1 v-if="show" style="animation-duration: 2s">welcome</h1>
+        </transition>
+        <!--Animate.css: https://github.com/daneden/animate.css-->
+        <!--Note: The animated class has a default speed of 1s. 
+            If you need custom duration, add it directly to your own CSS code -->
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+</html>

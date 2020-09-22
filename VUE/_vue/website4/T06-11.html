@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件處理</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+
+        <button v-on:click="greet">Greet</button>
+        <br/>
+        <a href="#" v-on:click="welcome('歡迎閣下大駕光臨', $event);">Welcome...</a>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            methods: {
+                greet: function (event) {// `event` is the native DOM event
+                    alert("歡迎光臨...\n" + event.target.tagName);
+                    //event.target指向最初觸發事件的DOM物件。
+                    //event.currentTarget屬性總會指向目前於冒泡階段正在處理該事件之事件處理器所註冊的DOM物件。
+                },
+                welcome: function (message,event) {
+                    alert(message);
+                    event.preventDefault();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

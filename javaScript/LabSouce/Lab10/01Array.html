@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01Array.html</title>
+</head>
+<body>
+    <script>
+        //Array 物件
+        let arr = ["123", "2", 55];
+        //Array 方法
+        arr = arr.concat([1,2,3])
+        console.log(arr);
+
+        arr.shift();
+        console.log(arr);
+
+        arr.unshift(7);
+        console.log(arr);
+
+        arr.pop();
+        console.log(arr);
+
+        arr.push(9);
+        console.log(arr);
+
+        arr.sort();
+        console.log(arr);
+
+        arr.reverse();
+        console.log(arr);
+
+        arr.splice(1,2,...[1,2,3]);
+        console.log(arr);
+
+
+    </script>
+</body>
+</html>

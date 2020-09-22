@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>FormData demo</title>
+</head>
+<body>
+    <h2>FormData Demo</h2>
+    <form enctype="multipart/form-data">
+        Name: <input type="text" name="name"><p>
+            City: <input type="text" name="city">
+    </form><p>
+    <button onclick="sendForm()">send</button><p>
+    <div id="demo"></div>
+
+    <script>
+        function sendForm() {
+            var form = document.querySelector("form");
+            var formdata = new FormData(form);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("demo").innerHTML = xhttp.responseText;
+            }
+            xhttp.open("POST", "/M10/NameCity", true);
+            xhttp.send(formdata);
+        }
+    </script>
+</body>
+</html>

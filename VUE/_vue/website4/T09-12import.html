@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>元件(Componenet)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <script type="module"> //Cannot use import statement outside a module
+        import buttonCounter from './T09-12export.js';
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                buttonCounter  //相當於 buttonCounter: buttonCounter
+            }
+        })
+    </script>   
+</body>
+</html>

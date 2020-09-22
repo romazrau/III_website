@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01basicDataType.html</title>
+</head>
+<body>
+    <script>
+        //數字變數
+        var a=10;
+        console.log("a="+a+" typeof a="+typeof a);
+
+        //字串變數
+        a="123";
+        console.log("a="+a+" typeof a="+typeof a);
+
+        //布林變數
+        var b=true;
+        console.log("b="+b+" typeof b="+typeof b);  //boolean
+        var c=b+1;
+        console.log("c="+c+" typeof c="+typeof c);   //number
+        
+        if(c)
+            window.alert(true);
+        else
+            window.alert(false);
+
+        var n=null;
+        console.log("n="+n+" typeof n="+typeof n);  //null object(datatype) Object(class)
+
+        var u;
+        console.log("u="+u+" typeof u="+typeof u);  //undefined(default value)
+        
+
+
+        //資料類型的轉換
+        //轉換為數值number
+        //parseInt,parseFloat,Number
+        console.log("parseInt('12a3.45')="+parseInt('12a3.45'));  //12
+        console.log("parseInt('123.45')="+parseInt('123.45'));  //123
+        console.log("parseInt('a123.45')="+parseInt('a123.45'));  //NaN not a number
+
+        console.log("Number('12a3.45')="+Number('12a3.45'));  //NaN not a number
+        console.log("Number('123.45')="+Number('123.45'));  //123.45
+        console.log("Number('a123.45')="+Number('a123.45'));  //NaN not a number
+
+
+        //轉換為字串string
+        console.log(3+2);
+        console.log("3"+2);
+
+        var unitPrice=35.6;
+        console.log("unit Price="+unitPrice);
+        console.log(typeof ("unit Price="+unitPrice));  //string
+
+        var strunitPrice=unitPrice.toString();       
+        console.log(typeof strunitPrice);  //string
+
+        console.log(typeof String(unitPrice));  //string   
+         
+        </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+* {
+  font-family: 標楷體;
+}
+
+h1 {
+  color: blueviolet;
+}
+.containter {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  background-color: beige;
+  padding: 1em;
+}
+@media screen and (max-width:600px){
+  .containter{
+    background-color: turquoise;
+  }
+}
+.flexItem {
+  flex-basis: auto;
+  flex-grow: 1;
+}
+
+.flexRight {
+  background-color: darkgray;
+}
+
+.block1 {
+  background-color: darkseagreen;
+}
+
+#red{
+  color:red;
+}
+
+

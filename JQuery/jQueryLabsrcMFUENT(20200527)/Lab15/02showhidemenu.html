@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>02showhidemenu.html</title>
+    <style>
+        body{
+            background: #ccc;
+        }
+        .transition{
+            transition: 0.4s;
+        }
+        .wrapper{
+            width:800px;
+            margin: 20px auto;
+        }
+        .menu{
+            transition: all 0.5s;
+            background-color: antiquewhite;
+            width:120px;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+            padding: 0 0 0 0px;
+        }
+        .menu.active{
+            background: #fff;
+            /* background:red; */
+        }
+        .menu ul{
+            transition: all 0.5s;
+            position: relative;
+            left:0;
+            top:0;
+            background:rgba(255,255,255,.8);
+            width:120px;
+            opacity: 0; /*表示完全透明 */
+            max-height: 0;
+            overflow: hidden;
+        }
+        .menu.active ul{
+            opacity: 1;
+            max-height: 300px;
+        }
+        .menu ul li a{
+            display: block;
+            padding:10px 12px;    
+        }
+        .menu ul li a:hover{
+            background: lightblue;
+        }
+        ul,li{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bar{
+            transition: all 0.5s;
+            width: 36px;
+            height: 6px;
+            background: #666;
+            margin: 6px 0;
+            border-radius: 2px;
+            margin-left: 5px;
+        }
+        .active .bar1{
+            -webkit-transform: rotate(-45deg) translate(-9px, 7px) ;
+            transform: rotate(-45deg) translate(-9px, 7px) ;                 
+        }
+        
+        .active .bar2{opacity: 0;}
+        
+        .active .bar3{
+            -webkit-transform: rotate(45deg) translate(-9px, -8px) ;
+            transform: rotate(45deg) translate(-9px, -8px) ;      
+        } 
+        
+    </style>          
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu" >
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a>Shop</a></li>
+                <li><a>Gallery</a></li>
+                <li><a>About</a></li>
+            </ul>
+        </div>
+    </div>  
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function(){
+            $(".menu").click(function(){
+                $(this).toggleClass("active");
+            })
+
+            $('.menu li').click(function(e){
+                e.stopPropagation();
+            })
+        })
+    </script>
+</body>
+</html>

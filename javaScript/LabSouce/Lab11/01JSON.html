@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01JSON.html</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        //二維陣列
+        myDatas = [["apple", "banana", "grape"], ["pork", "beef"]];
+        console.log(myDatas[1][0]);  //pork
+        for (let i = 0, maxi = myDatas.length; i < maxi; i++) {
+            for (let j = 0, maxj = myDatas[i].length; j < maxj; j++) {
+                console.log(myDatas[i][j]);
+            }
+        }
+
+        //array = [value,value,value]
+        let names = ["Tom", "Jack", "Mary"];
+
+
+        //object {property:value,property:value}
+        let obj = { name: "Paul", age: 20 };
+        //    alert(obj.name);
+        //    alert(obj.age)
+
+        //JSON array + object
+        // let emps = [{},{},{}];
+        // let obj = {emps:[{},{},{}]}
+
+        let emps = [{ name: "Jack", age: 20 },
+                    { name: "Mary", age: 29 },
+                    { name: "Steve", age: 24 }];
+
+        //emps - array
+        //emps[1] - object
+        //emps[1].name - Mary
+        
+
+        var data = {"emps":[
+                      {"name":"Tom","workYears":3,"salary":35000},
+                      {"name":"Jack","workYears":5,"salary":40000},
+                      {"name":"Mary","workYears":7,"salary":45000}
+                   ]};
+
+        //data - object       
+        //data.emps - array             
+        //data.emps[0] - object       
+        //data.emps[0].name - Tom   
+        
+        const div1 = document.querySelector("#div1");
+        let ul = document.createElement("ul");
+        for (let i = 0; i < data.emps.length; i++){
+            let li = document.createElement("li");
+            Object.keys(data.emps[i]).forEach((e)=>{
+                li.innerText += e + ': ' + data.emps[i][e] + " / ";
+            })
+            ul.appendChild(li);
+        }
+        div1.appendChild(ul);
+        
+    </script>
+</body>
+</html>

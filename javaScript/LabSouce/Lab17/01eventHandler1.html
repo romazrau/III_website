@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01eventHandler1.html</title>    
+</head>
+
+<body>
+
+
+    <!-- 標籤內事件處理器 -->
+    <h2 id="h2" onclick="console.log('HI')">123</h2>
+    <h3 id="h3">321</h3>
+    <h3 id="h33">555</h3>
+   
+    <!-- JavaScript屬性事件處理器 -->
+    
+
+    <!-- W3C DOM 處理器 -->
+    <script>
+        document.querySelector('#h3').onclick = () => {console.log("HII")};
+        document.querySelector('#h33').addEventListener(
+            "click",
+            () => console.log('HIII')
+        )
+    </script>
+</body>
+</html>

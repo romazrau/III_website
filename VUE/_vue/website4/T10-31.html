@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>插槽(Slot)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <current-user v-slot="slotProps">
+            Welcome: {{ slotProps.user.firstName }}
+        </current-user>
+    </div>
+    <script>
+        Vue.component('current-user', {
+            data: () =>  ({ data_user: {firstName:'Kitty',lastName:'Nancy'} }),
+            template:
+                `<span>
+                  <slot v-bind:user="data_user">
+                    Welcome: {{ data_user.lastName }}
+                  </slot>
+                </span>
+                `
+        });
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

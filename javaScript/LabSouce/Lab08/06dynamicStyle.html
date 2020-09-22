@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>06dynamicStyle</title>
+		<style>			
+			.s{
+				color:red;
+				background-color:yellow;				
+			}
+		</style>		
+	</head>
+	<body>
+		<h1>this is h1</h1>
+		<h1 id="h" class="n">this is h1</h1>
+
+		<script type="text/javascript">
+			var theH=document.getElementById("h");
+			theH.style.textAlign="center";
+			theH.style.textDecoration="line-through";
+
+			theH.className="s";			
+		</script>
+	</body>
+</html>

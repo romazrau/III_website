@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02closure</title>
+  </head>
+  <body>
+    <script>
+      function f() {
+        var a = 1;
+        var b = function () {
+          //Closure function
+          return ++a;
+        };
+        return b;
+      }
+      var c = f();
+      var ff = f();
+      console.log("f()=" + f());
+      console.log("c=" + c);
+      console.log("c()=" + c(), ff(), c(), ff()); //會得到什麼結果
+
+      function counter() {
+        var count = 0;
+
+        function innerCounter() {
+          return ++count;
+        }
+
+        return innerCounter;
+      }
+    </script>
+  </body>
+</html>

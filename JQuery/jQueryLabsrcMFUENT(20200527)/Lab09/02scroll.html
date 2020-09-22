@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02scroll.html</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+            height: 300vh;
+        }
+        .read_progress{
+            position: fixed;
+            left:0;
+            right:0;
+            top:0;
+            height: 20px;
+            background: rgba(0,0,0,.3);
+        }
+        .read_progress_bar{
+            height: 20px;
+            background: red;
+            width: 0%;
+            transition: width 0.3s;
+            animation: app 5s ease infinite;
+        }
+
+        @keyframes app {
+            0%{
+                background-color: red;
+            }
+            50%{
+                background-color: rgb(224, 44, 143);
+            }
+            100%{
+                background-color: red;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="read_progress">
+            <div id="read_progress_bar" class="read_progress_bar"></div>
+    </div>
+
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function(){
+
+            $(window).scroll(function(){   
+                let persent = $(this).scrollTop() / ($('body').height() - $(window).height());
+                $('#read_progress_bar').width( `${Math.round(persent*100)}vw` );
+            })
+
+
+        });
+    </script>
+ </body>
+</html>

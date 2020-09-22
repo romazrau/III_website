@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <link rel="shortcut icon" href="./img/kotowaza_hato_mamedeppou.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/small.css" media="screen and (max-width: 700px)">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navBar">
+            <h1 class="navTitle margin0">JavaScript</h1>
+            <div id="navLink-hw1" class="navItem focus"><a href="#hw1">九九乘法表</a></div>
+            <div id="navLink-hw2" class="navItem"><a href="#hw2">表單防呆</a></div>
+            <div id="navLink-hw3" class="navItem"><a href="#hw3">五燈獎</a></div>
+            <div id="navLink-hw4" class="navItem"><a href="#hw4">精靈屋</a></div>
+            <div id="navLink-hw5" class="navItem"><a href="#hw5">日曆</a></div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div id='hw1' class="showCard">
+            <h2 class="margin-top-0">九九乘法表</h2>
+        </div>
+
+        <div id='hw2' class="showCard disable">
+            <h2 class="margin-top-0">表單防呆</h2>
+            <form class="form" action="#" method="GET" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>基本資料</legend>
+                    <div>
+                        <label for="name">姓名: </label>
+                        <input class="formInput" id="inputName" type="text" name="name" placeholder="請輸入姓名">
+                        <span id="inputNamePrompt" class="formCheck"></span>
+                        <p class="formPrompt">1.不可空白 2.至少兩個字以上 3.必須全部為中文字</p>
+                    </div>
+                    <div>
+                        <label for="password">密碼: </label>
+                        <input class="formInput" id="inputPassword" type="password" name="password" placeholder="請輸入密碼">
+                        <span id="inputPasswordPrompt" class="formCheck"></span>
+                        <p class="formPrompt">1.不可空白 2.至少六個字 3.必須包含數字、英文字母、特殊字元[!@#$%^&*]</p>
+
+                    </div>
+                    <div>
+                        <label for="date">生日: </label>
+                        <input class="formInput" id="inputDate" type="text" name="date" placeholder="ex: 2000/2/29">
+                        <span id="inputDatePrompt" class="formCheck"></span>
+                        <p class="formPrompt">格式: 西元年/月/日 yyyy/mm/dd</p>
+                    </div>
+                    <p class="formBtnLine"><input class="formBtn" type="submit" value="送出"><input class="formBtn"
+                            type="reset" value="清除"></p>
+                </fieldset>
+            </form>
+
+        </div>
+
+        <div id='hw3' class="showCard disable">
+            <h2 class="margin-top-0">五燈獎</h2>
+            <div class="starRow">
+                <img class="star" id="startscore1" score=1 src="./img/space_nissyoku_glass_man.png" alt="給點分數吧">
+                <img class="star" id="startscore2" score=2 src="./img/space_nissyoku_glass_man.png" alt="給點分數吧">
+                <img class="star" id="startscore3" score=3 src="./img/space_nissyoku_glass_man.png" alt="給點分數吧">
+                <img class="star" id="startscore4" score=4 src="./img/space_nissyoku_glass_man.png" alt="給點分數吧">
+                <img class="star" id="startscore5" score=5 src="./img/space_nissyoku_glass_man.png" alt="給點分數吧">
+            </div>
+            <p id="starIGet"></p>
+            <button id="btnStarsReset" class="formBtn">重新評分</button>
+
+
+
+        </div>
+        <div id='hw4' class="showCard disable">
+            <h2 class="margin-top-0">精靈屋</h2>
+            <div class="carousel-container">
+                <div id="carousel" class="carousel">
+                    <a href="https://tw.portal-pokemon.com/play/pokedex/001"><img class="carousel-img"
+                            src="./img/pokemon001.png" alt="種子">
+                    </a><a href="https://tw.portal-pokemon.com/play/pokedex/004"><img class="carousel-img"
+                            src="./img/pokemon004.png" alt="火龍">
+                    </a><a href="https://tw.portal-pokemon.com/play/pokedex/007"><img class="carousel-img"
+                            src="./img/pokemon007.png" alt="龜龜">
+                    </a><a href="https://tw.portal-pokemon.com/play/pokedex/252"><img class="carousel-img"
+                            src="./img/pokemon252.png" alt="守宮">
+                    </a><a href="https://tw.portal-pokemon.com/play/pokedex/255"><img class="carousel-img"
+                            src="./img/pokemon255.png" alt="雞雞">
+                        <a href="https://tw.portal-pokemon.com/play/pokedex/258"><img class="carousel-img"
+                                src="./img/pokemon258.png" alt="蠑螈"></a>
+                </div>
+                <div class="carousel-ctrl-btn">
+                    <div id="btn-carousel-index1" class="btn-carousel-index formBtn Rcolor">1</div>
+                    <div id="btn-carousel-index2" class="btn-carousel-index formBtn Rcolor">2</div>
+                    <div id="btn-carousel-index3" class="btn-carousel-index formBtn Rcolor">3</div>
+                    <div id="btn-carousel-index4" class="btn-carousel-index formBtn Rcolor">4</div>
+                    <div id="btn-carousel-index5" class="btn-carousel-index formBtn Rcolor">5</div>
+                    <div id="btn-carousel-index6" class="btn-carousel-index formBtn Rcolor">6</div>
+                </div>
+                <div class="carousel-ctrl-btn">
+                    <div id="btn-carousel2left" class="formBtn">&lt</div>
+                    <div id="btn-carousel-toggle" class="formBtn"><img src="./img/stop.png" alt="stop"></div>
+                    <div id="btn-carousel2right" class="formBtn">&gt</div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div id='hw5' class="showCard disable">
+            <h2 class="margin-top-0">日曆</h2>
+
+            <div class="calendar">
+                <div>
+                    <h3>Welcome</h3>
+                    <form class="" action="#">
+                        <select name="dateYear" id="dateYear" size="1">
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                        </select>
+                        <span>年</span>
+                        <select name="dateMM" id="dateMM" size="1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <span>月</span>
+                        <select name="dateDD" id="dateDD" size="1">
+                            <option value="1">1</option>
+                        </select>
+                        <span>日</span>
+                    </form>
+                </div>
+                <div class="calendar-info-side">
+                    <h3>Information</h3>
+                    <div>&nbsp;&nbsp;您選擇的日期是&nbsp;<span id="calendarInfo"></span></div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <script id="jsMain" src="./js/main.js"></script>
+        <script src="./js/frame.js"></script>
+</body>
+
+</html>

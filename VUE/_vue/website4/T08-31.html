@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Function撰寫方式比較</title>
+</head>
+<body>
+    <h3>Function撰寫方式比較</h3>
+    <script>
+        //具名函數
+        function f1(x, y) {
+            console.log(`${x}+${y}=${x+y}`);
+        }
+        f1(10,20); //print: 10+20=30
+        //匿名函數
+        var f2 = function (x, y) {
+            console.log(`${x}+${y}=${x + y}`);
+        }
+        f2(10,20); //print: 10+20=30
+         //箭頭函數
+        var f3 = (x, y) => console.log(`${x}+${y}=${x + y}`);       
+        f3(10,20); //print: 10+20=30
+    </script>
+</body>
+</html>

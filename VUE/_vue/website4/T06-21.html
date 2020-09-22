@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件處理</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a href="https://vuejs.org/" v-on:click.prevent="welcome('1 click event from <a>');">Welcome1(.prevent)...</a>
+
+        <div v-on:click="welcome('2 click event from <div>')">
+            <p v-on:click="welcome('2 click event from <p>')">
+                <a href="#" v-on:click.stop="welcome('2 click event from <a>');">Welcome2(.stop)...</a>
+            </p>
+        </div>
+
+        <div v-on:click.capture="welcome('3 click event from <div>')">
+            <p v-on:click.capture="welcome('3 click event from <p>')">
+                <a href="#" v-on:click="welcome('3 click event from <a>');">Welcome3(.capture)...</a>
+            </p>
+        </div>
+
+        <div v-on:click.once="welcome('4 click event from <div>')">
+            <p v-on:click="welcome('4 click event from <p>')">
+                <a href="#" v-on:click.once="welcome('4 click event from <a>');">Welcome4(.once)...</a>
+            </p>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            methods: {               
+                welcome: function (message) {
+                    alert(message);                   
+                }
+            }
+        })
+    </script>
+</body>
+</html>

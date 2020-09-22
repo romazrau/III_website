@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<table align="center">
+    <tr>
+        <td width="300px">
+            <ul>
+                M05
+                <li><a href="@Url.Action("Index", "M05")">Index</a></li>
+            </ul>
+            <ul>
+                M07
+                <li><a href="@Url.Action("XhrGetSync", "M07")">XhrGetSync</a></li>
+                <li><a href="@Url.Action("XhrGetASync1", "M07")">XhrGetASync1</a></li>
+                <li><a href="@Url.Action("XhrPost", "M07")">XhrPost</a></li>
+            </ul>
+            <ul>
+                M08
+                <li><a href="@Url.Action("XhrXml", "M08")">XhrXml</a></li>
+            </ul>
+            <ul>
+                M09
+                <li><a href="@Url.Action("XhrJson", "M09")">XhrJson</a></li>
+            </ul>
+
+            <ul>
+                M10
+                <li><a href="@Url.Action("FormData", "M10")">FormData</a></li>
+            </ul>
+            <ul>
+                M11
+                <li><a href="@Url.Action("PromiseResolve", "M11")">PromiseResolve</a></li>
+                <li><a href="@Url.Action("PromiseReject", "M11")">PromiseReject</a></li>
+            </ul>
+            <ul>
+                M12
+                <li><a href="@Url.Action("FetchJson", "M12")">FetchJson</a></li>
+                <li><a href="@Url.Action("FetchUpload", "M12")">FetchUpload</a></li>
+            </ul>
+        </td>
+        <td width="300px">            
+            <ul>
+                M13
+                <li><a href="@Url.Action("JQueryGet", "M13")">JQueryGet</a></li>
+                <li><a href="@Url.Action("JQueryPost", "M13")">JQueryPost</a></li>
+                <li><a href="@Url.Action("JQueryLoad", "M13")">JQueryLoad</a></li>
+                <li><a href="@Url.Action("JQueryGetJson", "M13")">JQueryGetJson</a></li>
+            </ul>
+            <ul>
+                M14
+                <li><a href="@Url.Action("JQuerySerialize", "M14")">JQuerySerialize</a></li>
+                <li><a href="@Url.Action("LoadingImage", "M14")">LoadingImage</a></li>
+            </ul>
+            <ul>
+                M15
+                <li><a href="@Url.Action("CheckAcc", "M15")">CheckAcc</a></li>
+            </ul>
+            <ul>
+                M16
+                <li><a href="@Url.Action("Rss", "M16")">Rss</a></li>
+            </ul>
+            <ul>
+                M17
+                <li><a href="@Url.Action("AutoComplete", "M17")">AutoComplete</a></li>
+            </ul>
+            <ul>
+                M18
+                <li><a href="@Url.Action("AutoCompleteUI", "M18")">AutoCompleteUI</a></li>
+            </ul>
+        </td>
+    </tr>
+</table>

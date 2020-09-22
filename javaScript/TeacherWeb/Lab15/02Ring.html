@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>02Ring.html</title>
+    <style>
+        #rect {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: #b0e9ff;
+            /* top: 100px; */
+        }
+        .ball {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff2f27;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border: 1px solid black;
+        }
+    </style>        
+</head>
+<body>
+    <div id="rect">環狀排列</div>
+    <script>
+        const rect = document.querySelector('#rect');
+        const ballNum = 12;
+        const radUnit = 2  * Math.PI/ ballNum;
+        let b, i, x, y;
+        for(i=0; i<ballNum; i++){
+        b = document.createElement('div');
+        b.className = 'ball';
+        b.innerHTML = i;
+        x = 400-20 + Math.cos(radUnit*i)*200;
+        y = 300-20 + Math.sin(radUnit*i)*200;
+        b.style.left = x + 'px';
+        b.style.top = y + 'px';
+        rect.appendChild(b);
+    }
+    </script>
+
+</body>
+</html>

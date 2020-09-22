@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Demo</title>
+</head>
+
+<body>
+    <button id="button1">桌面提醒</button>
+
+    <script>
+        var btn = document.querySelector('#button1')
+        btn.addEventListener('click', load)
+        function load() {
+            //default granted denied
+            console.log(Notification.permission)
+            if (Notification.permission === "default") {
+                //要求權限
+                getPermission(load);
+            } else if (Notification.permission === "granted") {
+                //發出提醒
+                console.log('發出提醒')
+
+
+                let notification = new Notification("這是標題", {
+                    body: "這是內容喔喔喔 喔",
+                    icon: "./MyApp/icon/apple-icon-120x120-dunplab-manifest-11327.png",
+                })
+
+                // notification.onshow = () => {
+                //     setTimeout(() => {
+                //         notification.close();
+                //     }, 3000);
+                // }
+
+                notification.addEventListener("show", () => {
+                    setTimeout(() => {
+                        notification.close();
+                    }, 3000);
+                }
+                )
+
+
+
+            } else {
+                console.log('使用者拒絕提醒')
+            }
+        }
+        //callback 回呼函式
+        function getPermission(callback) {
+            Notification.requestPermission(callback);
+        }
+    </script>
+</body>
+
+</html>

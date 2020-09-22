@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$.get()</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <h2>$.get() Demo</h2>
+    <div id="demo"></div>
+    <script>
+        $.get("/M13/NameCity", { name: "Henry", city: "Taipei" },
+        function (data, status) {
+            if (status == "success")
+                $("#demo").html(data);
+        });
+    </script>
+</body>
+</html>

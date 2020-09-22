@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag And Drop</title>
+    <style>
+      .zone{
+          width:600px;
+          height:150px;
+          border:1px solid green;
+          margin:10px;
+      }
+      .item{
+          width:100px;
+          height:50px;
+          background-color:darkgreen;
+          margin:5px;
+          float: left;
+          text-align: center;
+          vertical-align: middle;
+          line-height: 50px;
+          color:white;
+          border-radius: 10px;
+
+      }
+      .over{
+          border:2px dotted red;
+      }
+    </style>
+</head>
+<body>
+    <div id="zone1" class="zone">
+        <div id="item1" class="item" draggable="true">Item1</div>
+        <div id="item2" class="item" draggable="true">Item2</div>        
+        <div id="item3" class="item" draggable="true">Item3</div>
+    </div>
+    <div id="zone2" class="zone"></div>
+ 
+    <script>
+        var items = document.querySelectorAll('.item'); 
+        var zones = document.querySelectorAll('.zone');
+
+        items.forEach(function(item, index){
+            item.addEventListener("dragstart", function(event){
+                event.dataTransfer.setData("text/plain", event.target.id);
+            })
+        })
+
+
+        zones.forEach(function(item, index){
+            item.addEventListener("dragover", function(event){
+                event.preventDefault();
+                event.stopPropagation();
+            })
+            item.addEventListener("drop", dropHandler);
+        })
+
+
+        function dropHandler(event){
+            event.preventDefault();
+            event.stopPropagation();
+
+            let id = event.dataTransfer.getData("text/plain");
+            let object = document.querySelector(`#${id}`);
+            event.target.appendChild(object);
+
+            //event.target.appendChild(object.cloneNode(true))
+        }
+
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Check Acc</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <h2>Check Acc</h2>
+    帳號 : <input type="text" id="cname" onblur="check()"><br><br>
+    <div id="demo"></div>
+    <script>
+
+        //function check() {
+        //    var xhttp = new XMLHttpRequest();
+        //    xhttp.onreadystatechange = function () {
+        //        if (xhttp.readyState == 4 && xhttp.status == 200) {
+        //            // 伺服器為以字串格式傳boolean值,JavaScript透過eval()轉換
+        //            var isAccOK = eval(xhttp.responseText);
+        //            document.getElementById("demo").innerHTML =
+        //                (isAccOK) ? "允許登入" : "無此帳號";
+        //        }
+        //    }
+        //    xhttp.open("GET", "/M15/CheckAccount?cname=" + cname.value, true);
+        //    xhttp.send();
+        //}
+
+
+        function check() {
+            let name = document.querySelector("#cname").value;
+
+            //$.ajax({
+            //    url: "/M15/CheckAccount?cname=" + name,
+            //    type: "GET",
+            //    success: (e) => {
+            //        var isAccOK = eval(e);
+            //        document.getElementById("demo").innerHTML =
+            //            (isAccOK) ? "允許登入" : "無此帳號";
+            //    }
+            //})
+            fetch("/M15/CheckAccount?cname=" + name  )
+                .then( (e) => e.text() )
+                .then( (e) => {
+                   var isAccOK = eval(e);
+                    document.getElementById("demo").innerHTML =
+                        (isAccOK) ? "允許登入" : "無此帳號";
+                })
+            
+        }
+    </script>
+</body>
+</html>

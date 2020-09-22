@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Serialize</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <h2>Form Serialize Demo</h2>
+    <form>
+        Name: <input type="text" name="name"><p>
+            City: <input type="text" name="city">
+        <p>
+    </form>
+    <button id="post">Send</button><p>
+    <div id="demo"></div>
+
+    <script>
+        $("#post").click(function () {
+            $("#demo").append($("form").serialize() + "<br>");
+
+            $.ajax({
+                url: "/M14/NameCity?" + $("form").serialize(),
+                type: "GET",
+                success: function (data) {
+                    $("#demo").append(data);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

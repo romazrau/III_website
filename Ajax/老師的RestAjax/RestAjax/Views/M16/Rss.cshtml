@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RSS Demo</title>
+</head>
+<body>
+    <h2>RSS Demo</h2>
+    <table border='1' id="demo"></table>
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+           if (xhttp.readyState == 4 && xhttp.status == 200) {           
+                var xmlDoc = xhttp.responseXML;
+                var txt = "<tr><th>pubDate<th>title";               
+                var pubDates = xmlDoc.getElementsByTagName("pubDate");
+                var titles = xmlDoc.getElementsByTagName("title");
+                for (let i = 0; i < pubDates.length; i++) {
+                    txt += "<tr><td>" + pubDates[i].firstChild.nodeValue;
+                    txt += "<td>" + titles[i].firstChild.nodeValue;
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+        }
+        xhttp.open("GET", "/M16/ReadRss", true);
+        xhttp.send();
+    </script>
+</body>
+</html>

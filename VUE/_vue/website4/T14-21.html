@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vue Router</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>    
+    <style>        
+        .router-link-active {
+            color: blue;
+            /*Notice that a <router-link> automatically gets the .router-link-active class when its target route is matched.*/
+        }
+        .a-button {
+            border:1px solid #444;
+            border-radius:5px;
+            text-decoration:none;
+            padding:5px;
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <router-link class="a-button" to="/user/kitty">Go to kitty 首頁</router-link>
+            <router-link class="a-button" to="/user/mary">Go to mary 首頁</router-link>
+            <router-link class="a-button" to="/user/peter">Go to peter 首頁</router-link>
+        </p>        
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 1. Define components
+        const PageUser = {
+            template: 
+                `<div>
+                    <h2>哈囉, {{$route.params.id}} 您好!</h2>
+                </div>
+                `
+        };
+        // 2. Define routes
+        // Each route should map to a component.
+        var routes = [
+            {
+                path: '/user/:id',
+                component: PageUser 
+            }, 
+            {
+                path: '/',
+                component: { template: `<h5 style='color:blue'>請點選上面按鈕以瀏覽相關頁面...</h5>` }
+            },
+            {
+                path: '*',
+                component: { template: `<h5 style='color:red'>您請求的頁面不存在(Not Found)...</h5>` }
+            },
+        ];
+        // 3. Create the router instance and pass the `routes` option
+        const router = new VueRouter({
+            routes //ES6 Shorthand property names(in Object literal/Initializer)
+        });
+        // 4. Create and mount the root Vue instance.
+        var vm = new Vue({
+            el: '#app',               
+            router //ES6 Shorthand property names(in Object literal/Initializer)
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website4", "..\..\..\..\..\_vue\website4\", "{75206576-7676-4986-A0DA-A77F1D2A1284}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50691"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\_vue\website4\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50691\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50691"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\_vue\website4\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50691\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50691"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75206576-7676-4986-A0DA-A77F1D2A1284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75206576-7676-4986-A0DA-A77F1D2A1284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C23A6759-CAD4-44F5-8345-C6DDBD9C4F7B}
+	EndGlobalSection
+EndGlobal

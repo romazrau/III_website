@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Auto-complete</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <b>Start typing a name:</b><p>
+    <div class="ui-widget">
+        <label for="tags">Suggestions: </label>
+        <input id="tags">
+    </div>
+
+    <script>
+        var availableTags;
+        $.ajax({
+            url: "/M18/GetAutoComplete",
+            type: "GET",
+            success: function (data) {
+                availableTags = data.split(",");
+                $("#tags").autocomplete({
+                    source: availableTags
+                });
+            }
+        });
+    </script>
+</body>
+</html>

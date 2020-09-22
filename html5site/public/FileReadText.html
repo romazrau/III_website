@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>File Object</title>
+    <style>
+    #zone1{
+          width:600px;
+          height:150px;
+          border:1px solid green;
+          margin:10px;
+          overflow: auto;
+      }
+    </style>
+</head>
+<body>
+    <input type="file" id="file1" />
+    <div id="zone1"></div>
+    <script>
+        //產生FileObject有兩種方法
+        //第一種使用檔案選取元件
+       document.querySelector('#file1').addEventListener('change',function(){
+
+            let fileData = this.files[0];
+            fileInfo(fileData);
+           
+       })
+       //第二種從檔案總管拖曳進來的檔案
+       var theZone = document.querySelector('#zone1');
+
+       theZone.addEventListener('dragover',function(event){
+           event.preventDefault();
+       })
+       theZone.addEventListener('drop',function(event){
+           event.preventDefault();
+           event.stopPropagation();
+
+           fileInfo(event.dataTransfer.files[0]);    
+       })
+
+       function fileInfo(theFile){
+        //讀取檔案內容
+        console.log(theFile);
+
+        let reader = new FileReader();
+
+        // *監聽 FileReader 有在讀資料時，改變theZones內容
+        reader.addEventListener("load", (event)=>{
+            theZone.textContent = event.target.result;
+        })
+
+        // FileReader 讀取 theFile
+        reader.readAsText(theFile, "UTF-8")
+     
+       }
+
+
+    </script>
+</body>
+</html>

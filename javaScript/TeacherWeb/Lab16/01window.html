@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>01window.html</title>
+    <style>
+        a.print{
+            text-decoration:none;
+            /* font-family:"標楷體"; */
+            font-size:24px;
+            text-transform:uppercase;
+            color:#000;
+            padding:10px;
+            border:2px solid #e5e5e5;
+            vertical-align:middle
+            }
+        a.print:hover{
+            background:#e5e5e5
+            } 
+    </style>
+</head>
+<body>
+    <input type="button" value="print" onclick="window.print()">
+    <a class="print" href="javascript:window.print()">列印</a>
+    <script>
+        // if(window.confirm("continue?"))
+        //     alert("continue");           
+        // else
+        //     alert("exit");
+        
+    </script>
+</body>
+</html>

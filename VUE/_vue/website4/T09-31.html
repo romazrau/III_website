@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>元件(Componenet)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <blog title="My journey with Vue"></blog>       
+        <blog title="Why Vue is so fun"></blog>
+        <blog v-bind:title="num"></blog>
+        <blog></blog>       
+    </div>   
+    <script>
+        //定義(註冊)一個名為blog的全域的新元件
+        Vue.component('blog', {
+            //props: ['title'],
+            props: {
+                'title': {
+                    type: String,
+                    default: '歡迎來到我的部落格'
+                }
+            },
+            template: '<h3>{{ title }}</h3>'
+        });
+        new Vue({
+            el: '#app',
+            data: {               
+                num: 100
+            }
+        })
+    </script>
+</body>
+</html>

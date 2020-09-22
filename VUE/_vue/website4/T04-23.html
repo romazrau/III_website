@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>條件呈現(Conditional Rendering)</title>
+    <script src="javascripts/vue 2.6.11/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div style="height:60px; width:200px; text-align:center; margin-top: 20px; border:1px solid #444">
+            <h3 v-show="ok">歡迎光臨</h3>
+        </div>
+        <input type="button" value="切換顯示/隱藏" onclick="vm.btnClick();" />
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                ok: true
+            },
+            methods: {
+                btnClick: function () {
+                    this.ok = !this.ok;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

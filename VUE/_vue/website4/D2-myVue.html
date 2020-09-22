@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./javascripts//vue 2.6.11/vue.js"></script>
+
+
+    <style>
+ </style>
+
+</head>
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <div>{{msg2}}</div>
+
+        <hr>
+        <hr>
+
+        <div>
+            <button v-on:click="countPlus" >click me</button>
+            <div>{{count}}</div>
+        </div>
+
+        <br>
+        <br>
+
+        <div v-on:click.capture="showMsg('div capture')">
+            <p v-on:click.capture="showMsg('p capture')">
+                <a href="#" v-on:click.capture="showMsg('a capture')">click</a>
+            </p>
+        </div>
+
+
+        <div v-on:click.capture="showMsg('div capture')">
+            <p v-on:click="showMsg('p bubbling')">
+                <a href="#123" v-on:click.prevent="showMsg('a bubbling')">click</a>
+            </p>
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+            <span>auto focus</span>
+            <input  v-focus  type="text" >
+        </div>
+        
+
+    
+    </div>
+    <script>
+Vue.directive('focus',{
+    inserted: function(element){
+        element.focus();
+    }
+})
+
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hellow PJ",
+                msg2: "HI HI",
+                count: 1
+            },
+
+            methods:{
+                countPlus: function(){
+                    this.count++;
+                },
+                showMsg: function(msg){
+                    console.log(msg);
+                }
+            }
+
+
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>

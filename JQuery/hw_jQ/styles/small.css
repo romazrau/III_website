@@ -1,0 +1,30 @@
+.navBar {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.navTitle,
+.navItem {
+  padding-left: 5vw;
+}
+
+.container {
+  padding: 5vmin;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showCard {
+  min-height: 10rem;
+}
+
+.table99 td {
+  font-size: 2.5vw;
+  /* border-right: 0.5vw solid #fbc687; */
+  border-left: 0.5w solid #fbc687;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
