@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <button id="btnAdd" class='button'>add</button>
+        <button id="btnAddFormCshap" class="button">add from C#</button>
+        <button id="btn" class="button">add from C#</button>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">password</th>
+                    <th scope="col">fBirthday</th>
+                    <th scope="col">adress</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="./lib/jquery-3.5.1.js"></script>
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    
+    <script>
+
+
+        const data2html = (obj) => {
+            let tr = document.createElement('tr');
+            let tdB = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.classList.add('btnRemoveThis');
+            btn.innerText = "Remove"
+            tdB.appendChild(btn);
+            tr.appendChild(tdB);
+
+            let prop = Object.keys(obj);
+            prop.map(
+                (e) => {
+                    let td = document.createElement('td');
+                    td.innerHTML = obj[e];
+                    tr.appendChild(td)
+                }
+            )
+            return tr
+        }
+
+        $('#btnAdd').click(() => {
+            $.get('./data/t02.json', (e) => {
+                const tbody = document.querySelector('#tbody');
+                e.map((ele) => {
+                    tbody.appendChild(data2html(ele));
+                })
+            })
+        })
+
+
+        $('#btnAddFormCshap').click(() => {
+
+            fetch('http://localhost:62371/A/getCustomerList/')
+                .then((e) => {
+                    console.log(e);
+                    return e.text();
+                }).then(
+                    out => {
+                        let data = JSON.parse(out);
+                        const tbody = document.querySelector('#tbody');
+                        data.map((ele) => {
+                            tbody.appendChild(data2html(ele));
+                        })
+                    }
+                )
+                .catch(function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText || textStatus);
+                })
+
+        })
+
+
+
+        $("#tbody").on('click', '.btnRemoveThis', function (e) {
+            new Promise(
+                (res, rej) => {
+                    var i = 3;
+                    let st = setInterval(
+                        () => {
+                            e.target.innerText = i;
+                            i--
+                            if (i <= 0) {
+                                clearInterval(st);
+                            }
+                        },
+                        1000
+                    )
+                    setTimeout(
+                        () => {
+                            res(() => $(this).closest('tr').remove());
+                        },
+                        4000
+                    )
+                }
+            ).then(
+                r => {
+                    console.log(123);
+                    r();
+                }
+            )
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

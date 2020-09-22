@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="info"></div>
+    
+
+    <script src="./lib/jquery-3.5.1.js"></script>
+    <script>
+        $.get('./data/t01.json', (e)=>{
+            document.querySelector('.info').innerHTML += e + '<br/>';
+        })
+
+        $.get('./data/t01.json', (e)=>{
+            document.querySelector('.info').innerHTML += e + '<br/>';
+        },'json')
+        
+        $.get('./data/t01.json', (e)=>{
+            document.querySelector('.info').innerHTML += e + '<br/>';
+        },'text')
+        r
+    </script>
+
+
+</body>
+</html>

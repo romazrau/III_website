@@ -1,0 +1,26 @@
+[
+    {
+        "fId": 1,
+        "fName": "Marco",
+        "fPhone": "0921445663",
+        "fPassword": 1234,
+        "fBirthday": "1988-12-01",
+        "fAddress": "台北市"
+    },
+    {
+        "fId": 2,
+        "fName": "Selina",
+        "fPhone": "0911236547",
+        "fPassword": 1234,
+        "fBirthday": "1990-01-20",
+        "fAddress": "台中市"
+    },
+    {
+        "fId": 3,
+        "fName": "MayLee",
+        "fPhone": "0936541254",
+        "fPassword": 1234,
+        "fBirthday": "1987-05-20",
+        "fAddress": "高雄市"
+    }
+]
